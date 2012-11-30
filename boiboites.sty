@@ -1,0 +1,131 @@
+\RequirePackage{xkeyval}
+\RequirePackage{tikz}
+\RequirePackage{amssymb}
+\RequirePackage{calc}
+\RequirePackage{newfile}
+\RequirePackage{fancyvrb}
+
+\define@key{boxedtheorem}{titlecolor}{\def\titlecolor{#1}}
+\define@key{boxedtheorem}{titlebackground}{\def\titlebackground{#1}}
+\define@key{boxedtheorem}{background}{\def\background{#1}}
+\define@key{boxedtheorem}{titleboxcolor}{\def\titleboxcolor{#1}}
+\define@key{boxedtheorem}{boxcolor}{\def\boxcolor{#1}}
+\define@key{boxedtheorem}{thcounter}{\def\thcounter{#1}}
+\define@key{boxedtheorem}{size}{\def\size{#1}}
+\define@key{boxedtheorem}{text shape}{\def\txtshape{#1}}
+\presetkeys{boxedtheorem}{titlecolor = black, titlebackground = white, background = white,%
+                         titleboxcolor = black, boxcolor = black, thcounter=, size = \textwidth-20pt,
+												 text shape =}{}
+
+\newcommand{\couleurs}[1][]{%
+    \setkeys{boxedtheorem}{#1}
+    \tikzstyle{fancytitle} =[draw=\titleboxcolor, rounded corners, fill=\titlebackground,
+                            text= \titlecolor]
+    \tikzstyle{mybox} = [draw=\boxcolor, fill=\background, very thick,
+                        rectangle, rounded corners, inner sep=10pt, inner ysep=8pt, text width = \textwidth - 20pt]
+}
+
+
+
+%Commande générique pour faire un joli encadré
+\newsavebox{\boiboite}
+\newcommand{\titre}{Titre}
+\newenvironment{boite}[2][]%
+    {%
+    \renewcommand{\titre}{#2}
+    \couleurs[#1]
+    \begin{lrbox}{\boiboite}%
+     \begin{minipage}[!h]{\size} \vspace{4pt}
+    }%
+    {%
+     \end{minipage}
+    \end{lrbox}
+		\begin{center}
+    \begin{tikzpicture}
+    \node [mybox] (box){\usebox{\boiboite}};
+    \node[fancytitle, right=10pt] at (box.north west) {\titre};
+    \end{tikzpicture}
+		\end{center}
+    }
+		
+
+\newcommand{\boitethfilename}[1]{inp_#1.inp}
+
+\newoutputstream{tmp}%
+\newoutputstream{tmp3}%
+\newcommand{\newboxedtheorem}[3][]{%
+    \couleurs[#1]%
+		%% erase old file (maybe from last compile) ---
+		\openoutputfile{\boitethfilename{#2}}{tmp}%
+		\closeoutputstream{tmp}%
+		%---
+		%% create load command
+		\expandafter\def\csname printall#2\endcsname{\input{\boitethfilename{#2}}}
+		%% create the environment
+		\newenvironment{#2}[2][]{%
+			\openoutputfile{tmp.txt}{tmp}%
+			\addtostream{tmp}{\protect\boite[#1]{\protect\textbf{\protect\sffamily~#3~##2\@ifnotempty{##1}{~\protect\sffamily(##1)}\protect\textbf{\protect\sffamily.}}}\protect\txtshape}%
+			\closeoutputstream{tmp}%
+			\VerbatimOut{tmp2.txt}}%
+		{\endVerbatimOut%
+			\openoutputfile{tmp3.txt}{tmp3}%
+			\addtostream{tmp3}{\protect\endboite}%	
+			\closeoutputstream{tmp3}%
+			\concatfiles{tmp.txt}{tmp2.txt}{tmp.txt}%
+			\concatfiles{tmp.txt}{tmp3.txt}{tmp.txt}%
+			\concatfiles{\boitethfilename{#2}}{tmp.txt}{\boitethfilename{#2}}%
+			\input{tmp.txt}%
+		}
+		
+}
+
+
+%Plain box without title
+\newcommand{\plainboitebox}[2][]{
+	\couleurs[#1]
+    \begin{lrbox}{\boiboite}%
+     \begin{minipage}[!h]{\size} \vspace{4pt}
+			#2
+     \end{minipage}
+    \end{lrbox}
+		\begin{center}
+    \begin{tikzpicture}
+    \node [mybox] (box){\usebox{\boiboite}};
+    \end{tikzpicture}
+		\end{center}
+}
+
+
+
+	
+%#1: 1. file
+%#2: 2. file
+%#3: output file
+\newread\in
+\newwrite\out
+\newcommand{\concatfiles}[3]{
+ 	\openin\in=#1
+ 	\immediate\openout\out tmp.tmp
+ 	\endlinechar-1
+ 	\loop \unless\ifeof\in
+ 		\readline\in to \l
+ 		\immediate\write\out{\l}
+ 	\repeat
+ 	\immediate\closein\in
+ 	\openin\in=#2
+ 	\loop \unless\ifeof\in
+ 		\readline\in to \l
+ 		\immediate\write\out{\l}
+ 	\repeat
+ 	\closein\in
+ 	\immediate\closeout\out
+ 	%
+ 	\immediate\openout\out #3
+ 	\openin\in=tmp.tmp
+ 	\loop \unless\ifeof\in
+ 		\readline\in to \l
+ 		\immediate\write\out{\l}
+ 	\repeat
+ 	\closein\in
+ 	\immediate\closeout\out
+}
