@@ -1,2 +1,0 @@
-work:grep -r --exclude='TODO' "TODO" * > TODO
-work:wc -l TODO
