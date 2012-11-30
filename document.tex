@@ -51,6 +51,7 @@ DIV = 18
 \usepackage{hyperref}
 
 % diese paket macht bei mir probleme, ich benutze pdfLaTeX
+% hmm, wir brauchens hier ja nicht und meines Wissens ist tikz eh besser
 %\usepackage{pst-all} %%PSTricks - nicht verwendbar mit pdfLaTeX
 
 
@@ -74,6 +75,23 @@ titleboxcolor = black]{lemma}{Lemma}
 titleboxcolor = black]{uebung}{Übung}
 \newboxedtheorem[boxcolor=gray, background=white, titlebackground=white,
  titleboxcolor = black]{bem}{Bemerkung}
+ 
+% BUG: Umlaute und ß funktionieren nicht mit VerbatimOut
+% Lösung:
+\newcommand{\s}{ß}
+
+
+%% Math Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\R}{\ensuremath \mathbb{R}}
+\newcommand{\Rn}{\ensuremath \mathbb{R}^n}
+\newcommand{\Rd}{\ensuremath \mathbb{R}^d}
+\newcommand{\N}{\ensuremath \mathbb{N}}
+\newcommand{\Q}{\ensuremath \mathbb{Q}}
+\newcommand{\Z}{\ensuremath \mathbb{Z}}
+\newcommand{\C}{\ensuremath \mathbb{C}}
+\DeclareMathOperator{\D}{D}
+
+
 
 
 %% Bibliographiestil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,7 +145,33 @@ titleboxcolor = black]{uebung}{Übung}
 \subsection{Klassifikation von partiellen DGLs}
 
 \begin{definition}[Partielle DGL]{}
-	Sei \ldots
+	Sei $\Omega \subset \R^n$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat die Form 
+	\begin{equation}
+		\tag{PDE ($\ast$)}
+		F(x,u,\D u, \D^2 u, \dots, \D^k u) = 0\,,
+	\end{equation}
+	wobei
+	$$F:\Omega\times \R \times \Rn \times \dots \times \R^{n^k} \to \R$$
+	gegeben und $u:\Omega \to \R$ gesucht.
+\end{definition}
+
+\begin{definition}[Klassifikation PDEs]{}
+	\begin{enumerate}
+	  \item PDE ($\ast$) hei\s t \emph{linear}, wenn sie die Form
+	  	$$\sum_{|\alpha| \leq k} a_\alpha(x) \D^\alpha u = f(x)$$
+	  	hat, wobei $a_\alpha:\Omega \to \R$, $f: \Omega \to \R$ gegeben.
+	  \item PDE ($\ast$) hei\s t \emph{semilinear}, wenn sie die Form
+	  	$$\sum_{|\alpha| = k} a_\alpha(x) \D^\alpha u  +
+	  		a_0(x,u,\D u, \dots, \D^{k-1}u) = 0$$
+	  	hat, wobei $a_\alpha:\Omega \to \R$,
+	  	$a_0: \Omega \times \R \times \Rn \times \dots \times \R^{n^{k-1}} \to \R$ gegeben.
+	  \item PDE ($\ast$) hei\s t \emph{quasilinear}, wenn sie die Form
+	  	$$\sum_{|\alpha| = k} a_\alpha(x,u,\D u,\dots, \D^{k-1}u) \D^\alpha u  +
+	  		a_0(x,u,\D u, \dots, \D^{k-1}u) = 0$$
+	  	hat, wobei
+	  	$a_\alpha, a_0: \Omega \times \R \times \Rn \times \dots \times \R^{n^{k-1}} \to \R$ gegeben.
+	  \item PDE ($\ast$) hei\s t \emph{nichtlinear}, wenn sie nicht von Typ 1. - 3. ist. 
+	\end{enumerate}
 \end{definition}
 
 
