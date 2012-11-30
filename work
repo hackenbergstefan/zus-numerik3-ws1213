@@ -12,8 +12,6 @@ cd $DIR
 grep -r --exclude='TODO' --exclude='work' "TODO" * > TODO
 wc -l TODO
 echo
-exit
-
 
 tmux new-session -d -s tex
 tmux new-window -t tex:2 -n 'latexmk' 'latexmk -pvc -pdf document.tex'
