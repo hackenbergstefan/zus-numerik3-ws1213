@@ -61,24 +61,27 @@ DIV = 18
 
 \newboxedtheorem[boxcolor=green, background=white, titlebackground=white,
 titleboxcolor = black]{definition}{Definition}
-\newboxedtheorem[boxcolor=orange, background=white, titlebackground=white, 
+\newboxedtheorem[boxcolor=orange, background=white, titlebackground=white,
 titleboxcolor = black]{prop}{Proposition}
-\newboxedtheorem[boxcolor=orange, background=white, titlebackground=white, 
+\newboxedtheorem[boxcolor=orange, background=white, titlebackground=white,
 titleboxcolor = black]{kor}{Korollar}
-\newboxedtheorem[boxcolor=blue, background=white, titlebackground=white, 
+\newboxedtheorem[boxcolor=blue, background=white, titlebackground=white,
 titleboxcolor = black]{satz}{Satz}
-\newboxedtheorem[boxcolor=red, background=white, titlebackground=white, 
+\newboxedtheorem[boxcolor=red, background=white, titlebackground=white,
 titleboxcolor = black]{bsp}{Beispiel}
-\newboxedtheorem[boxcolor=orange, background=white, titlebackground=white, 
+\newboxedtheorem[boxcolor=orange, background=white, titlebackground=white,
 titleboxcolor = black]{lemma}{Lemma}
 \newboxedtheorem[boxcolor=purple, background=white, titlebackground=white,
 titleboxcolor = black]{uebung}{Übung}
 \newboxedtheorem[boxcolor=gray, background=white, titlebackground=white,
  titleboxcolor = black]{bem}{Bemerkung}
- 
-% BUG: Umlaute und ß funktionieren nicht mit VerbatimOut
+
+% BUG: ß funktioniert nicht mit VerbatimOut
 % Lösung:
 \newcommand{\s}{ß}
+\renewcommand{\ae}{ä}
+\renewcommand{\oe}{ö}
+\newcommand{\ue}{ü}
 
 
 %% Math Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -89,8 +92,12 @@ titleboxcolor = black]{uebung}{Übung}
 \newcommand{\Q}{\ensuremath \mathbb{Q}}
 \newcommand{\Z}{\ensuremath \mathbb{Z}}
 \newcommand{\C}{\ensuremath \mathbb{C}}
+\newcommand{\bO}{\ensuremath \bar\Omega}
 \DeclareMathOperator{\D}{D}
 
+
+%% Andere Abkürzungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\zshgd}{zusammenhängend}
 
 
 
@@ -145,7 +152,8 @@ titleboxcolor = black]{uebung}{Übung}
 \subsection{Klassifikation von partiellen DGLs}
 
 \begin{definition}[Partielle DGL]{}
-	Sei $\Omega \subset \R^n$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat die Form 
+Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat
+die Form
 	\begin{equation}
 		\tag{PDE ($\ast$)}
 		F(x,u,\D u, \D^2 u, \dots, \D^k u) = 0\,,
@@ -168,11 +176,74 @@ titleboxcolor = black]{uebung}{Übung}
 	  \item PDE ($\ast$) hei\s t \emph{quasilinear}, wenn sie die Form
 	  	$$\sum_{|\alpha| = k} a_\alpha(x,u,\D u,\dots, \D^{k-1}u) \D^\alpha u  +
 	  		a_0(x,u,\D u, \dots, \D^{k-1}u) = 0$$
-	  	hat, wobei
-	  	$a_\alpha, a_0: \Omega \times \R \times \Rn \times \dots \times \R^{n^{k-1}} \to \R$ gegeben.
-	  \item PDE ($\ast$) hei\s t \emph{nichtlinear}, wenn sie nicht von Typ 1. - 3. ist. 
+		hat, wobei $a_\alpha, a_0: \Omega \times \R \times \Rn \times \dots \times \R^{n^{k-1}} \to \R$ 
+		gegeben.
+	  \item PDE ($\ast$) hei\s t \emph{nichtlinear}, wenn sie nicht von Typ 1.--3. ist.
 	\end{enumerate}
 \end{definition}
+
+% Beispiele ausgelassen
+
+\subsection{Typeneinteilung für PDEs 2. Ordnung}
+
+\begin{definition}{}
+	Setze $p_i := \partial_{x_i} u$, $p_{ij} := \partial_{x_i}\partial_{x_J}u$.
+	\begin{equation}
+		\tag{PDE ($\ast\ast$)}
+		F(x,u, p_1, \dots, p_n, p_{11}, \dots, p_{nn}) = 0
+	\end{equation}
+	heißt \emph{PDE 2. Ordnung}. 
+	$$M(x) := \begin{pmatrix} \partial_{p_{11}} F & \dots & \partial_{p_{1n}} F\\
+		\vdots & \ddots & \vdots\\
+		\partial_{p_{n1}} F & \dots & \partial_{p_{nn}} F
+	\end{pmatrix}$$
+\end{definition}
+
+\begin{definition}{}
+	PDE ($\ast\ast$) heißt
+	\begin{enumerate}
+	  \item \emph{elliptisch} in $x$, falls $M(x)$ positiv oder negativ definit ist.
+	  \item \emph{parabolisch} in $x$, falls genau ein Eigenwert von $M(x)$ gleich 0 ist und alle anderen 
+	  	gleiches Vorzeichen haben.
+	  \item \emph{hyperbolisch} in $x$, falls genau ein Eigenwert von $M(x)$ ein anderes Vorzeichen hat, 
+	  	als alle anderen.
+	\end{enumerate}
+\end{definition}
+
+\begin{bsp}{}
+	\begin{enumerate}
+	  \item Poission-Gleichung mit $M = \begin{pmatrix}-1 &  & \\&\ddots& \\ && -1\end{pmatrix}$ ist elliptisch.
+	  \item Wärmeleitungs-Gleichung mit $M = \begin{pmatrix}-1 & && \\&\ddots&& \\ && -1&\\&&& 0\end{pmatrix}$
+	  	ist parabolisch.
+	  \item Wellengleichung mit $M = \begin{pmatrix}-1 & && \\&\ddots&& \\ && -1&\\&&& 1\end{pmatrix}$
+	  	ist hyperbolisch.
+	\end{enumerate}
+\end{bsp}
+ 
+\section{Klassische Lösung elliptischer PDEs}
+
+
+\begin{definition}[Funktionenräume]{}
+	Sei $\Omega \subset \Rn$ offen, \zshgd, beschränkt.
+	\begin{enumerate}
+	  \item $C(\bO, \R^m)$ ist Raum aller auf $\bO$ \emph{stetigen Funktionen} nach $\R^m$.\\
+	     $C(\bO) := C(\bO, \R)$.\\
+	     $$\|u\|_{C(\bO,\R^m)} := \sup_{x\in \bar \Omega} \|u(x)\|\,.$$
+	   \item $C^k(\bO,\R^m)$ mit $k\in\N$ ist Raum aller auf $\Omega$ \emph{$k$-mal stetig differenzierbaren
+	   	Funktionen}, die zusammen mit ihren Ableitungen bis Ordnung $k$ stetig auf $\bO$ fortgesetzt werden
+	   	können.
+	   	$$\|u\|_{C^k(\bO,\R^m)} := \sum_{|\alpha|\leq k} \|\D^\alpha u\|_{C(\bO,\R^m)}\,.$$
+	   \item $C^{0,\alpha}(\bO,\R^m) = \{u\in C(\bO,\R^m):\ \|u\|_{C^{0,\alpha}(\bO,\R^m)} < \infty\}$
+	   	mit $$\|u\|_{C^{0,\alpha}(\bO,\R^m)} := \sup_{x\neq y\in \bO} \frac{\|u(x)-u(y)\|}{\|x-y\|^\alpha}\,,$$
+	   	und $\alpha \in [0,1]$ ist Raum aller \emph{gleichm\ae\s ig H\oe lder stetigen Funktionen zum Exponent $\alpha$}.
+	   \item $C^{k,\alpha}(\bO, \R^m) := \{u \in C^k(\bO,\R^m):\ \D^\gamma u\in C^{0,\alpha}(\bO,\R^m), |\gamma|=k\}$
+	\end{enumerate}
+\end{definition}
+
+\begin{bem}{}
+	$C^{k,0} = C^k$, $C^{k,1} \neq C^{k+1}$.
+\end{bem}
+
 
 
 \end{document}
