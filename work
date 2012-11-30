@@ -40,5 +40,6 @@ tmux new-window -t tex:3 -n 'log' 'vim document.log'
 tmux select-window -t tex:1
 tmux attach-session -t tex
 
-git commit -a -m "automatic commit"
+#git commit -a -m "automatic commit"
+git commit -a
 git push
