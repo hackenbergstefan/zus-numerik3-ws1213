@@ -37,10 +37,11 @@ DIV = 18
 
 
 %% Deutsche Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{amsmath}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[ansinew]{inputenc}
+
+\usepackage{amsmath,amssymb,amsthm}
 
 \usepackage{lmodern} %Type1-Schriftart für nicht-englische Texte
 
@@ -82,7 +83,9 @@ titleboxcolor = black]{uebung}{Übung}
 \renewcommand{\ae}{ä}
 \renewcommand{\oe}{ö}
 \newcommand{\ue}{ü}
-
+\newcommand{\Ue}{Ü}
+\newcommand{\Ae}{Ä}
+\newcommand{\Oe}{Ö}
 
 %% Math Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\R}{\ensuremath \mathbb{R}}
@@ -93,6 +96,7 @@ titleboxcolor = black]{uebung}{Übung}
 \newcommand{\Z}{\ensuremath \mathbb{Z}}
 \newcommand{\C}{\ensuremath \mathbb{C}}
 \newcommand{\bO}{\ensuremath \bar\Omega}
+\renewcommand{\L}{\ensuremath \mathcal{L}}
 \DeclareMathOperator{\D}{D}
 
 
@@ -163,6 +167,7 @@ die Form
 	gegeben und $u:\Omega \to \R$ gesucht.
 \end{definition}
 
+
 \begin{definition}[Klassifikation PDEs]{}
 	\begin{enumerate}
 	  \item PDE ($\ast$) hei\s t \emph{linear}, wenn sie die Form
@@ -176,7 +181,7 @@ die Form
 	  \item PDE ($\ast$) hei\s t \emph{quasilinear}, wenn sie die Form
 	  	$$\sum_{|\alpha| = k} a_\alpha(x,u,\D u,\dots, \D^{k-1}u) \D^\alpha u  +
 	  		a_0(x,u,\D u, \dots, \D^{k-1}u) = 0$$
-		hat, wobei $a_\alpha, a_0: \Omega \times \R \times \Rn \times \dots \times \R^{n^{k-1}} \to \R$ 
+		hat, wobei $a_\alpha, a_0: \Omega \times \R \times \Rn \times \dots \times \R^{n^{k-1}} \to \R$
 		gegeben.
 	  \item PDE ($\ast$) hei\s t \emph{nichtlinear}, wenn sie nicht von Typ 1.--3. ist.
 	\end{enumerate}
@@ -192,7 +197,7 @@ die Form
 		\tag{PDE ($\ast\ast$)}
 		F(x,u, p_1, \dots, p_n, p_{11}, \dots, p_{nn}) = 0
 	\end{equation}
-	heißt \emph{PDE 2. Ordnung}. 
+	hei\s t \emph{PDE 2. Ordnung}.
 	$$M(x) := \begin{pmatrix} \partial_{p_{11}} F & \dots & \partial_{p_{1n}} F\\
 		\vdots & \ddots & \vdots\\
 		\partial_{p_{n1}} F & \dots & \partial_{p_{nn}} F
@@ -200,12 +205,12 @@ die Form
 \end{definition}
 
 \begin{definition}{}
-	PDE ($\ast\ast$) heißt
+	PDE ($\ast\ast$) hei\s t
 	\begin{enumerate}
 	  \item \emph{elliptisch} in $x$, falls $M(x)$ positiv oder negativ definit ist.
-	  \item \emph{parabolisch} in $x$, falls genau ein Eigenwert von $M(x)$ gleich 0 ist und alle anderen 
+	  \item \emph{parabolisch} in $x$, falls genau ein Eigenwert von $M(x)$ gleich 0 ist und alle anderen
 	  	gleiches Vorzeichen haben.
-	  \item \emph{hyperbolisch} in $x$, falls genau ein Eigenwert von $M(x)$ ein anderes Vorzeichen hat, 
+	  \item \emph{hyperbolisch} in $x$, falls genau ein Eigenwert von $M(x)$ ein anderes Vorzeichen hat,
 	  	als alle anderen.
 	\end{enumerate}
 \end{definition}
@@ -219,7 +224,7 @@ die Form
 	  	ist hyperbolisch.
 	\end{enumerate}
 \end{bsp}
- 
+
 \section{Klassische Lösung elliptischer PDEs}
 
 
@@ -244,6 +249,26 @@ die Form
 	$C^{k,0} = C^k$, $C^{k,1} \neq C^{k+1}$.
 \end{bem}
 
+
+\begin{definition}{}
+	Sei $\Omega\subset \Rn$ offen, \zshgd, beschr\ae nkt. $\Omega$ geh\oe rt zur Klasse $C^{k,\alpha}$,
+	$k\in \N_{0}, \alpha\in [0,1]$, wenn es endlich viele lokale Koordinatensysteme $s_1,\ldots,s_m$,
+	Funktionen $\varphi_1,\ldots,\varphi_m$, sowie $r_i>0,h_i>0$, $i=1\ldots m$ existieren, sodass
+	\begin{enumerate}
+	  \item $\varphi_j\in C^{k,\alpha}(\bO_{r_j})$ mit $\bO_{r_j} = \left\{ y =
+	  	\left[\begin{array}{c}y_1\\\vdots\\y_{n-1}\end{array}\right]:\ |y_i|\leq r_j, i=1\ldots n-1\right\}$
+	  \item Zu jedem $x\in \partial \Omega$ gibt es $j\in \{1,\ldots,m\}$, sodass
+	  	$x = \begin{bmatrix}y\\\varphi_j(y)\end{bmatrix}$, $y\in \Omega_{r_j}$.
+	  \item $\begin{bmatrix} y \\ y_n\end{bmatrix} \in \Omega \Leftrightarrow \exists j:\ y \in \bO_{r_j}$ mit 
+	  	$\varphi_j(y) < y_n < \varphi_j(y) + h_j$\\
+	  	$\begin{bmatrix} y \\ y_n\end{bmatrix} \not\in \Omega \Leftrightarrow \forall j:\ y \in \bO_{r_j}$ gilt 
+	  	 $\varphi_j(y)- h_j < y_n < \varphi_j(y)$
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[RWP]{}
+	$$\text{(RWP)}\begin{cases} \L u = f & \text{ in }\Omega \\ R u = g & \text{ auf } \partial \Omega\end{cases}$$
+\end{definition}
 
 
 \end{document}
