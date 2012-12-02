@@ -95,8 +95,10 @@ titleboxcolor = black]{uebung}{Übung}
 \newcommand{\Q}{\ensuremath \mathbb{Q}}
 \newcommand{\Z}{\ensuremath \mathbb{Z}}
 \newcommand{\C}{\ensuremath \mathbb{C}}
-\newcommand{\bO}{\ensuremath \bar\Omega}
+\newcommand{\bO}{\ensuremath \overline{\Omega}}
+\newcommand{\RO}{\ensuremath \partial\Omega}
 \renewcommand{\L}{\ensuremath \mathcal{L}}
+\newcommand{\Ccap}{\ensuremath C^2(\Omega)\cap C(\bO)}
 \DeclareMathOperator{\D}{D}
 
 
@@ -268,7 +270,66 @@ die Form
 
 \begin{definition}[RWP]{}
 	$$\text{(RWP)}\begin{cases} \L u = f & \text{ in }\Omega \\ R u = g & \text{ auf } \partial \Omega\end{cases}$$
+	mit $$\L u = -\sum_{i,j=1}^n a_{ij}(x)\partial_{x_i}\partial_{x_j} u + 
+	\sum_{i=1}^n b_i(x)\partial_{x_i}u + c(x) u$$
+	und $a_{ij}, b_i, c, f:\Omega \to \R$, $g:\partial \Omega \to \R$.
+	Weiter $A(x) := \begin{bmatrix} a_{11}(x) & \dots & a_{1n}(x)\\ \vdots & \ddots & \vdots \\ 
+		a_{n1}(x)&\dots&a_{nn}(x)\end{bmatrix}$\\
+	\paragraph{Randbedingungen:}
+		\begin{description}
+		  \item[Dirichlet-RB] $u=g$ auf $\RO$.
+		  \item[Neumann-RB] $A(x)\nabla u \cdot \nu = g$ auf $\RO$
+		  \item[Robin-RB] $A(x) \nabla u \cdot \nu + \alpha(x)u = g$ auf $\RO$.
+		\end{description}
+	\paragraph{Voraussetzungen:}
+	\begin{enumerate}
+	  \item $\L$ ist gleichm\ae \s ig elliptisch, d.h. $\exists \lambda_0 > 0$, sodass
+	  	$$\xi^T A(x)\xi \geq \lambda_0  \|\xi\|^2 \qquad \forall \xi \in \Rn,\ \forall x\in \Omega\,.$$
+	  \item $a_{ij}, b_i, c, f \in C(\bO), g \in C(\RO)$. 
+	\end{enumerate}
 \end{definition}
+
+\begin{definition}[Klassischer L\oe sung]{}
+	$u\in \Ccap$ hei\s t \emph{klassische L\oe sung} von (RWP) mit $Ru = u$, wenn die
+	Gleichungen von (RWP) in jedem Punkt von $\Omega$ bzw. $\RO$ erf\ue llt sind.
+\end{definition}
+
+
+\subsection{Eindeutigkeit}
+\begin{satz}[Maximum Prinzip]{2.1}
+	$u\in \Ccap$ L\oe sung von (RWP) mit $f\leq 0$ in $\Omega$ und $c(x) \equiv 0$.\\
+	Dann 
+	$$ \sup_{x\in \bO} u(x) = \sup_{x\in \RO} u(x) = \sup_{x\in \RO} g(x)\,.$$
+\end{satz}
+
+
+\begin{kor}{2.2}
+	Sei $c\geq 0, f\leq 0$ in $\Omega$. Dann
+	$$\sup_{\bO} u \leq \sup_{\RO} \max{u,0}\,.$$
+\end{kor}
+
+\begin{kor}[Vergleichsprinzip]{2.3}
+	F\ue r $u_1, u_2 \in \Ccap$ und $c\geq 0$ gelte $\L u_1 \leq \L u_2 \in \Omega$ und $u_1 \leq u_2$ auf $\RO$.\\
+	Dann gilt $u_1\leq u_2$ auf $\bO$.
+\end{kor}
+
+\begin{kor}[Eindeutigkeit]{2.4}
+	Sei $c\geq 0$. Dann hat (RWP) h\oe chstens eine L\oe sung $u\in \Ccap$.
+\end{kor}
+
+
+\subsection{Existenz}
+
+\begin{satz}{2.5}
+	$\Omega \in \Rn$ Lipschitzgebiet, $a_{ij}, b_i, c\in C(\bO)$, $c\geq 0$, $g\in C(\RO)$.\\
+	Dann besitzt (RWP) genau eine L\oe sung $u\in\Ccap$.
+\end{satz}
+
+
+\section{Differenzenverfahren}
+
+\subsection{Differenzenverfahren für die Poissongleichung in $\Omega = (a,b)$}
+
 
 
 \end{document}
