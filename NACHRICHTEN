@@ -1,8 +1,9 @@
 Fragen:
     * Warum macht der bei Zeilenumbrüchen, die zusammengefügt werden, KEINE Leerzeichen?
         - bei mir ist das verhalten normal anders, liegt das an einem Paket?
-     	> Liegt an der neuen version von texlipse. habe noch keine l�sung gefunden :(
-     	  bei der alten gings problemlos...
+    > Liegt an der neuen version von texlipse. habe noch keine l�sung gefunden :(
+     	bei der alten gings problemlos...
+    - muss an den eigebundenen Paketen Liegen, sonst hätte ich das problem nicht auch, wenn ich es bei mir compiliere
 
 Infos:
     * zu $$:
@@ -12,7 +13,7 @@ Infos:
             Nonetheless, there are a few situations where it causes problems, [...]
             it may not work under future versions of tex.
         - benutze statt dessen: "The backslash/bracket pair, \[ and \]"
-        > hatte damit noch nie probleme ;) aber hab das auch schonmal gelesen.
+    > hatte damit noch nie probleme ;) aber hab das auch schonmal gelesen.
 
 
 vim: ft=vimwiki :
