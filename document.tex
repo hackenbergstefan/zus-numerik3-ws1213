@@ -158,14 +158,15 @@ titleboxcolor = black]{uebung}{Übung}
 \subsection{Klassifikation von partiellen DGLs}
 
 \begin{definition}[Partielle DGL]{}
-Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat
-die Form
+Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat die Form
 	\begin{equation}
 		\tag{PDE ($\ast$)}
 		F(x,u,\D u, \D^2 u, \dots, \D^k u) = 0\,,
 	\end{equation}
 	wobei
-	$$F:\Omega\times \R \times \Rn \times \dots \times \R^{n^k} \to \R$$
+  \[
+    F:\Omega\times \R \times \Rn \times \dots \times \R^{n^k} \to \R
+  \]
 	gegeben und $u:\Omega \to \R$ gesucht.
 \end{definition}
 
@@ -173,18 +174,23 @@ die Form
 \begin{definition}[Klassifikation PDEs]{}
 	\begin{enumerate}
 	  \item PDE ($\ast$) hei\s t \emph{linear}, wenn sie die Form
-	  	$$\sum_{|\alpha| \leq k} a_\alpha(x) \D^\alpha u = f(x)$$
+      \[
+        \sum_{|\alpha| \leq k} a_\alpha(x) \D^\alpha u = f(x)
+      \]
 	  	hat, wobei $a_\alpha:\Omega \to \R$, $f: \Omega \to \R$ gegeben.
 	  \item PDE ($\ast$) hei\s t \emph{semilinear}, wenn sie die Form
-	  	$$\sum_{|\alpha| = k} a_\alpha(x) \D^\alpha u  +
-	  		a_0(x,u,\D u, \dots, \D^{k-1}u) = 0$$
+      \[
+        \sum_{|\alpha| = k} a_\alpha(x) \D^\alpha u  +
+	  		a_0(x,u,\D u, \dots, \D^{k-1}u) = 0
+      \]
 	  	hat, wobei $a_\alpha:\Omega \to \R$,
 	  	$a_0: \Omega \times \R \times \Rn \times \dots \times \R^{n^{k-1}} \to \R$ gegeben.
 	  \item PDE ($\ast$) hei\s t \emph{quasilinear}, wenn sie die Form
-	  	$$\sum_{|\alpha| = k} a_\alpha(x,u,\D u,\dots, \D^{k-1}u) \D^\alpha u  +
-	  		a_0(x,u,\D u, \dots, \D^{k-1}u) = 0$$
-		hat, wobei $a_\alpha, a_0: \Omega \times \R \times \Rn \times \dots \times \R^{n^{k-1}} \to \R$
-		gegeben.
+      \[
+        \sum_{|\alpha| = k} a_\alpha(x,u,\D u,\dots, \D^{k-1}u) \D^\alpha u  +
+        a_0(x,u,\D u, \dots, \D^{k-1}u) = 0
+      \]
+		hat, wobei $a_\alpha, a_0: \Omega \times \R \times \Rn \times \dots \times \R^{n^{k-1}} \to \R$ gegeben.
 	  \item PDE ($\ast$) hei\s t \emph{nichtlinear}, wenn sie nicht von Typ 1.--3. ist.
 	\end{enumerate}
 \end{definition}
@@ -200,10 +206,12 @@ die Form
 		F(x,u, p_1, \dots, p_n, p_{11}, \dots, p_{nn}) = 0
 	\end{equation}
 	hei\s t \emph{PDE 2. Ordnung}.
-	$$M(x) := \begin{pmatrix} \partial_{p_{11}} F & \dots & \partial_{p_{1n}} F\\
+  \[
+    M(x) := \begin{pmatrix} \partial_{p_{11}} F & \dots & \partial_{p_{1n}} F\\
 		\vdots & \ddots & \vdots\\
 		\partial_{p_{n1}} F & \dots & \partial_{p_{nn}} F
-	\end{pmatrix}$$
+    \end{pmatrix}
+  \]
 \end{definition}
 
 \begin{definition}{}
@@ -235,13 +243,20 @@ die Form
 	\begin{enumerate}
 	  \item $C(\bO, \R^m)$ ist Raum aller auf $\bO$ \emph{stetigen Funktionen} nach $\R^m$.\\
 	     $C(\bO) := C(\bO, \R)$.\\
-	     $$\|u\|_{C(\bO,\R^m)} := \sup_{x\in \bar \Omega} \|u(x)\|\,.$$
+       \[
+         \|u\|_{C(\bO,\R^m)} := \sup_{x\in \bar \Omega} \|u(x)\|\,.
+       \]
 	   \item $C^k(\bO,\R^m)$ mit $k\in\N$ ist Raum aller auf $\Omega$ \emph{$k$-mal stetig differenzierbaren
 	   	Funktionen}, die zusammen mit ihren Ableitungen bis Ordnung $k$ stetig auf $\bO$ fortgesetzt werden
 	   	können.
-	   	$$\|u\|_{C^k(\bO,\R^m)} := \sum_{|\alpha|\leq k} \|\D^\alpha u\|_{C(\bO,\R^m)}\,.$$
+      \[
+        \|u\|_{C^k(\bO,\R^m)} := \sum_{|\alpha|\leq k} \|\D^\alpha u\|_{C(\bO,\R^m)}\,.
+      \]
 	   \item $C^{0,\alpha}(\bO,\R^m) = \{u\in C(\bO,\R^m):\ \|u\|_{C^{0,\alpha}(\bO,\R^m)} < \infty\}$
-	   	mit $$\|u\|_{C^{0,\alpha}(\bO,\R^m)} := \sup_{x\neq y\in \bO} \frac{\|u(x)-u(y)\|}{\|x-y\|^\alpha}\,,$$
+	   	mit 
+      \[
+        \|u\|_{C^{0,\alpha}(\bO,\R^m)} := \sup_{x\neq y\in \bO} \frac{\|u(x)-u(y)\|}{\|x-y\|^\alpha}\,,
+      \]
 	   	und $\alpha \in [0,1]$ ist Raum aller \emph{gleichm\ae\s ig H\oe lder stetigen Funktionen zum Exponent $\alpha$}.
 	   \item $C^{k,\alpha}(\bO, \R^m) := \{u \in C^k(\bO,\R^m):\ \D^\gamma u\in C^{0,\alpha}(\bO,\R^m), |\gamma|=k\}$
 	\end{enumerate}
@@ -269,9 +284,14 @@ die Form
 \end{definition}
 
 \begin{definition}[RWP]{}
-	$$\text{(RWP)}\begin{cases} \L u = f & \text{ in }\Omega \\ R u = g & \text{ auf } \partial \Omega\end{cases}$$
-	mit $$\L u = -\sum_{i,j=1}^n a_{ij}(x)\partial_{x_i}\partial_{x_j} u + 
-	\sum_{i=1}^n b_i(x)\partial_{x_i}u + c(x) u$$
+  \[
+    \text{(RWP)}\begin{cases} \L u = f & \text{ in }\Omega \\ R u = g & \text{ auf } \partial \Omega\end{cases}
+  \]
+  mit 
+  \[
+    \L u = -\sum_{i,j=1}^n a_{ij}(x)\partial_{x_i}\partial_{x_j} u + 
+    \sum_{i=1}^n b_i(x)\partial_{x_i}u + c(x) u
+  \]
 	und $a_{ij}, b_i, c, f:\Omega \to \R$, $g:\partial \Omega \to \R$.
 	Weiter $A(x) := \begin{bmatrix} a_{11}(x) & \dots & a_{1n}(x)\\ \vdots & \ddots & \vdots \\ 
 		a_{n1}(x)&\dots&a_{nn}(x)\end{bmatrix}$\\
@@ -284,7 +304,9 @@ die Form
 	\paragraph{Voraussetzungen:}
 	\begin{enumerate}
 	  \item $\L$ ist gleichm\ae \s ig elliptisch, d.h. $\exists \lambda_0 > 0$, sodass
-	  	$$\xi^T A(x)\xi \geq \lambda_0  \|\xi\|^2 \qquad \forall \xi \in \Rn,\ \forall x\in \Omega\,.$$
+      \[
+        \xi^T A(x)\xi \geq \lambda_0  \|\xi\|^2 \qquad \forall \xi \in \Rn,\ \forall x\in \Omega\,.
+      \]
 	  \item $a_{ij}, b_i, c, f \in C(\bO), g \in C(\RO)$. 
 	\end{enumerate}
 \end{definition}
@@ -299,13 +321,17 @@ die Form
 \begin{satz}[Maximum Prinzip]{2.1}
 	$u\in \Ccap$ L\oe sung von (RWP) mit $f\leq 0$ in $\Omega$ und $c(x) \equiv 0$.\\
 	Dann 
-	$$ \sup_{x\in \bO} u(x) = \sup_{x\in \RO} u(x) = \sup_{x\in \RO} g(x)\,.$$
+  \[
+    \sup_{x\in \bO} u(x) = \sup_{x\in \RO} u(x) = \sup_{x\in \RO} g(x)\,.
+  \]
 \end{satz}
 
 
 \begin{kor}{2.2}
 	Sei $c\geq 0, f\leq 0$ in $\Omega$. Dann
-	$$\sup_{\bO} u \leq \sup_{\RO} \max{u,0}\,.$$
+  \[
+    \sup_{\bO} u \leq \sup_{\RO} \max{u,0}\,.
+  \]
 \end{kor}
 
 \begin{kor}[Vergleichsprinzip]{2.3}

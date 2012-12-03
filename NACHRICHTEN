@@ -1,0 +1,15 @@
+Fragen:
+    * Warum macht der bei Zeilenumbrüchen, die zusammengefügt werden, KEINE Leerzeichen?
+        - bei mir ist das verhalten normal anders, liegt das an einem Paket?
+
+Infos:
+    * zu $$:
+        - Nach http://www.math.uiuc.edu/~hildebr/tex/displays.html gilt:
+        - das double dollar symbol ($$) ist schlecht: 
+            [...] In LaTeX the double dollar sign does not exist as a valid command [...]
+            Nonetheless, there are a few situations where it causes problems, [...]
+            it may not work under future versions of tex.
+        - benutze statt dessen: "The backslash/bracket pair, \[ and \]"
+
+
+vim: ft=vimwiki :
