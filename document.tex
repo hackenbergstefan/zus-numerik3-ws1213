@@ -99,6 +99,12 @@ titleboxcolor = black]{uebung}{Übung}
 \newcommand{\RO}{\ensuremath \partial\Omega}
 \renewcommand{\L}{\ensuremath \mathcal{L}}
 \newcommand{\Ccap}{\ensuremath C^2(\Omega)\cap C(\bO)}
+\newcommand{\RWPh}{(RWP)$_h$~}
+\newcommand{\RWP}{(RWP)~}
+\newcommand{\RWPeins}{(RWP 1)~}
+\newcommand{\RWPheins}{(RWP 1)$_h$~}
+\newcommand{\LSGeins}{(LSG 1)~}
+\newcommand{\LSG}{(LSG)~}
 \DeclareMathOperator{\D}{D}
 
 
@@ -289,14 +295,14 @@ die Form
 	\end{enumerate}
 \end{definition}
 
-\begin{definition}[Klassischer L\oe sung]{}
+\begin{definition}[Klassische L\oe sung]{}
 	$u\in \Ccap$ hei\s t \emph{klassische L\oe sung} von (RWP) mit $Ru = u$, wenn die
 	Gleichungen von (RWP) in jedem Punkt von $\Omega$ bzw. $\RO$ erf\ue llt sind.
 \end{definition}
 
 
 \subsection{Eindeutigkeit}
-\begin{satz}[Maximum Prinzip]{2.1}
+\begin{satz}[Maximums Prinzip]{2.1}
 	$u\in \Ccap$ L\oe sung von (RWP) mit $f\leq 0$ in $\Omega$ und $c(x) \equiv 0$.\\
 	Dann 
 	$$ \sup_{x\in \bO} u(x) = \sup_{x\in \RO} u(x) = \sup_{x\in \RO} g(x)\,.$$
@@ -330,6 +336,58 @@ die Form
 
 \subsection{Differenzenverfahren für die Poissongleichung in $\Omega = (a,b)$}
 
+\begin{plainboitethm}{Differenzenverfahren}
+	$$\text{\RWP* } \begin{cases} -\Delta u = f & \text{in }\Omega \\ u(a) = u_a \\ u(b) = u_b\end{cases}$$
+	\paragraph{1. Diskretisierung}
+	$h = \frac{b-a}{n}$, $\Omega_h = \{x_i = a+ih :\ i=1\dots n-1\}$, $\RO_h = \{x_0 = a, x_n=b\}$.
+	\paragraph{2. Approximation der Ableitung}
+	$$u''(x_i) \approx \frac{u(x_i+h) - 2u(x_i) + u_i(x_i - h)}{h^2} =: \Delta_hu(x_i)$$
+	bezeichne $$\text{\RWPh*}\ \begin{cases}-\Delta_h u_h = f & \text{in }\Omega_h\\
+		u_h = g &\text{auf }\RO_h\end{cases}$$
+	\paragraph{3. Aufstellen des linearen Gleichungssystems mit OBdA $\Omega = (0,1)$}
+	$$\frac{1}{h^2} \begin{bmatrix}2 & -1\\
+		-1 & 2 & -1\\
+		 & -1 & 2 & -1\\
+		 &  &  & \ddots\\
+		 &  &  & -1 & 2 & -1\\
+		 &  &  &  & -1 & 2
+	\end{bmatrix}
+	\begin{bmatrix} u_h(x_1) \\ \\[8pt] \vdots\\[8pt]  \\ u_h(x_{n-1})\end{bmatrix}
+	= 
+	\begin{bmatrix} f(x_1) + \frac{g_0}{h^2} \\ f(x_2) \\ \vdots\\[-6pt]\vdots \\ f(x_{n-2})\\f(x_{n-1}) + \frac{g_1}{h^2}
+	\end{bmatrix}$$
+	bezeichne $\text{(LSG 1)}\ -\tilde\Delta_u \tilde u_h = \tilde f_h$.
+\end{plainboitethm}
 
+
+\begin{definition}[Konvergenzordnung]{}
+	$U_h:=\{f: \Omega_h \to \R\}, R_h: C(\bO)\to U_h$ die Einschr\ae nkung. (RWP)$_h$ hei\s t \emph{konvergent von Ordnung $P$},
+	falls $\exists c>0, h_0> 0$, sodass für die L\oe sung $u$ von \RWP und die L\oe sung $u_h$ von \RWPh gilt:
+	$$\|u_h - R_h u\|_h \leq ch^P\qquad \forall h\leq h_0\,.$$
+\end{definition}
+
+\begin{definition}[Konsistenzordnung]{}
+	\RWPh hei\s t \emph{konsitent von Ordnung $P$}, falls
+	$$\| \L_h R_hu - R_h \L u\|_h \leq c \|u\|_{C^{P+2}(\bO)} h^P \qquad \forall u\in C^{p+2}(\bO)\,.$$
+\end{definition}
+
+\begin{definition}[Stabil]{}
+	\RWPh hei\s t \emph{stabil}, falls $\tilde\L_h$ invertierbar und $\exists h_0 > 0:$
+	$$\sup_{0<h\leq h_0}\|\tilde\L_h^{-1}\| < \infty\,.$$ 
+\end{definition}
+
+
+\begin{satz}{3.1}
+	\RWPh konsistent und stabil. Dann konvergent.\\
+	Ist es zus\ae tzlich konsistent von Ordnung $P$ und $u\in C^{p+1}(\bO)$. Dann konvergent von Ordnung $P$. 
+\end{satz}
+
+\clearpage
+\section{Alle Definitionen}
+\printalldefinition
+
+\clearpage
+\section{Alle Sätze}
+\printallsatz
 
 \end{document}

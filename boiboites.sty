@@ -77,8 +77,14 @@
 			\concatfiles{\boitethfilename{#2}}{tmp.txt}{\boitethfilename{#2}}%
 			\input{tmp.txt}%
 		}
-		
 }
+
+%Plain theorem box without saving to file
+\newenvironment{plainboitethm}[2][]{
+	\couleurs[#1]
+	\begin{boite}[#1]{\textbf{\sffamily~#2}}\txtshape%
+	}{\end{boite}}
+
 
 
 %Plain box without title
