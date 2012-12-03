@@ -4,6 +4,9 @@ Fragen:
     > Liegt an der neuen version von texlipse. habe noch keine l�sung gefunden :(
      	bei der alten gings problemlos...
     - muss an den eigebundenen Paketen Liegen, sonst hätte ich das problem nicht auch, wenn ich es bei mir compiliere
+    > problem liegt nicht an texlipse, sondern an verbatimout in boiboites. beim speichern in datei macht er nen 
+      trim, d.h. jedes hintere leerzeichen (und auch jedes am zeilenanfang) wird gelöscht
+      (tabs komischerweise nicht...) mal schauen wie sich das beheben lässt.
 
 Infos:
     * zu $$:
