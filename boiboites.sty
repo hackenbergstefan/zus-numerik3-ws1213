@@ -2,8 +2,8 @@
 \RequirePackage{tikz}
 %\RequirePackage{amssymb}
 \RequirePackage{calc}
-\RequirePackage{newfile}
-\RequirePackage{fancyvrb}
+%\RequirePackage{newfile}
+%\RequirePackage{fancyvrb}
 
 \define@key{boxedtheorem}{titlecolor}{\def\titlecolor{#1}}
 \define@key{boxedtheorem}{titlebackground}{\def\titlebackground{#1}}
@@ -48,42 +48,53 @@
 		\end{center}
     }
 		
+%%%% Leider nicht wirklich funktionsfähig
+%\newcommand{\boitethfilename}[1]{inp_#1.inp}
+%
+%\newoutputstream{tmp}%
+%\newoutputstream{tmp3}%
+%\newinputstream{boiteinput}%
+%\newcommand{\newboxedtheorem}[3][]{%
+    %\couleurs[#1]%
+		%%% erase old file (maybe from last compile) ---
+		%\openoutputfile{\boitethfilename{#2}}{tmp}%
+		%\closeoutputstream{tmp}%
+		%%---
+		%%% create load command
+		%\expandafter\def\csname printall#2\endcsname{\input{\boitethfilename{#2}}}
+		%%% create the environment
+		%\newenvironment{#2}[2][]{%
+			%\openoutputfile{tmp.txt}{tmp}%
+			%\addtostream{tmp}{\protect\boite[#1]{\protect\textbf{\protect\sffamily~#3\@ifnotempty{##2}{~\protect\sffamily ##2}\@ifnotempty{##1}{~\protect\sffamily(##1)}\protect\textbf{\protect\sffamily.}}}\protect\txtshape}%
+			%\closeoutputstream{tmp}%
+			%\VerbatimOut{tmp2.txt}}%
+		%{\endVerbatimOut%
+			%\openoutputfile{tmp3.txt}{tmp3}%
+			%\addtostream{tmp3}{\protect\endboite}%	
+			%\closeoutputstream{tmp3}%
+			%\concatfiles{tmp.txt}{tmp2.txt}{tmp.txt}%
+			%\concatfiles{tmp.txt}{tmp3.txt}{tmp.txt}%
+			%\concatfiles{\boitethfilename{#2}}{tmp.txt}{\boitethfilename{#2}}%
+			%\input{tmp.txt}%
+		%}
+		%
+%}
 
-\newcommand{\boitethfilename}[1]{inp_#1.inp}
 
-\newoutputstream{tmp}%
-\newoutputstream{tmp3}%
-\newinputstream{boiteinput}%
 \newcommand{\newboxedtheorem}[3][]{%
-    \couleurs[#1]%
-		%% erase old file (maybe from last compile) ---
-		\openoutputfile{\boitethfilename{#2}}{tmp}%
-		\closeoutputstream{tmp}%
-		%---
-		%% create load command
-		\expandafter\def\csname printall#2\endcsname{\input{\boitethfilename{#2}}}
-		%% create the environment
-		\newenvironment{#2}[2][]{%
-			\openoutputfile{tmp.txt}{tmp}%
-			\addtostream{tmp}{\protect\boite[#1]{\protect\textbf{\protect\sffamily~#3\@ifnotempty{##2}{~\protect\sffamily ##2}\@ifnotempty{##1}{~\protect\sffamily(##1)}\protect\textbf{\protect\sffamily.}}}\protect\txtshape}%
-			\closeoutputstream{tmp}%
-			\VerbatimOut{tmp2.txt}}%
-		{\endVerbatimOut%
-			\openoutputfile{tmp3.txt}{tmp3}%
-			\addtostream{tmp3}{\protect\endboite}%	
-			\closeoutputstream{tmp3}%
-			\concatfiles{tmp.txt}{tmp2.txt}{tmp.txt}%
-			\concatfiles{tmp.txt}{tmp3.txt}{tmp.txt}%
-			\concatfiles{\boitethfilename{#2}}{tmp.txt}{\boitethfilename{#2}}%
-			\input{tmp.txt}%
-		}
+	\couleurs[#1]%
+	\newenvironment{#2}[2][]{%
+		\boite[#1]{\textbf{\sffamily~#3~\@ifnotempty{##2}{~\sffamily ##2}\@ifnotempty{##1}{~\sffamily(##1)}\textbf{\sffamily.}}}\txtshape%
+	}{\endboite}
 }
 
+
+
 %Plain theorem box without saving to file
-\newenvironment{plainboitethm}[2][]{
+\newenvironment{plainboitethm}[2][]{%
 	\couleurs[#1]
-	\begin{boite}[#1]{\textbf{\sffamily~#2}}\txtshape%
-	}{\end{boite}}
+	\boite[#1]{\textbf{\sffamily~#2}}\txtshape%
+	}{\endboite}
 
 
 
@@ -105,34 +116,34 @@
 
 
 	
-%#1: 1. file
-%#2: 2. file
-%#3: output file
-\newread\boitesinstream
-\newwrite\boitesoutstream
-\newcommand{\concatfiles}[3]{
- 	\openin\boitesinstream=#1
- 	\immediate\openout\boitesoutstream tmp.tmp
- 	\endlinechar-1
- 	\loop \unless\ifeof\boitesinstream
- 		\readline\boitesinstream to \l
- 		\immediate\write\boitesoutstream{\l}
- 	\repeat
- 	\immediate\closein\boitesinstream
- 	\openin\boitesinstream=#2
- 	\loop \unless\ifeof\boitesinstream
- 		\readline\boitesinstream to \l
- 		\immediate\write\boitesoutstream{\l}
- 	\repeat
- 	\closein\boitesinstream
- 	\immediate\closeout\boitesoutstream
- 	%
- 	\immediate\openout\boitesoutstream #3
- 	\openin\boitesinstream=tmp.tmp
- 	\loop \unless\ifeof\boitesinstream
- 		\readline\boitesinstream to \l
- 		\immediate\write\boitesoutstream{\l}
- 	\repeat
- 	\closein\boitesinstream
- 	\immediate\closeout\boitesoutstream
-}
+%%#1: 1. file
+%%#2: 2. file
+%%#3: output file
+%\newread\boitesinstream
+%\newwrite\boitesoutstream
+%\newcommand{\concatfiles}[3]{
+ 	%\openin\boitesinstream=#1
+ 	%\immediate\openout\boitesoutstream tmp.tmp
+ 	%\endlinechar-1
+ 	%\loop \unless\ifeof\boitesinstream
+ 		%\readline\boitesinstream to \l
+ 		%\immediate\write\boitesoutstream{\l}
+ 	%\repeat
+ 	%\immediate\closein\boitesinstream
+ 	%\openin\boitesinstream=#2
+ 	%\loop \unless\ifeof\boitesinstream
+ 		%\readline\boitesinstream to \l
+ 		%\immediate\write\boitesoutstream{\l}
+ 	%\repeat
+ 	%\closein\boitesinstream
+ 	%\immediate\closeout\boitesoutstream
+ 	%%
+ 	%\immediate\openout\boitesoutstream #3
+ 	%\openin\boitesinstream=tmp.tmp
+ 	%\loop \unless\ifeof\boitesinstream
+ 		%\readline\boitesinstream to \l
+ 		%\immediate\write\boitesoutstream{\l}
+ 	%\repeat
+ 	%\closein\boitesinstream
+ 	%\immediate\closeout\boitesoutstream
+%}
