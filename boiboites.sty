@@ -84,7 +84,7 @@
 \newcommand{\newboxedtheorem}[3][]{%
 	\couleurs[#1]%
 	\newenvironment{#2}[2][]{%
-		\boite[#1]{\textbf{\sffamily~#3~\@ifnotempty{##2}{~\sffamily ##2}\@ifnotempty{##1}{~\sffamily(##1)}\textbf{\sffamily.}}}\txtshape%
+		\boite[#1]{\textbf{\sffamily~#3\@ifnotempty{##2}{~\sffamily ##2}\@ifnotempty{##1}{~\sffamily(##1)}\textbf{\sffamily.}}}\txtshape%
 	}{\endboite}
 }
 
