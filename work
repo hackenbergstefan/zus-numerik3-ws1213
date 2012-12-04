@@ -9,6 +9,8 @@ else
 fi
 cd $DIR
 
+git pull
+
 grep -r --exclude='TODO' --exclude='work' "TODO" * > TODO
 wc -l TODO
 echo
