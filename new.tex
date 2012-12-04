@@ -1,0 +1,82 @@
+\begin{lemma}{4.11}
+  Falls $b(x)=0$ und $c(s)\geq 0$ in $\Omega$, dann ist $B$ in $(VGL1)'$
+  koerzitiv.
+\end{lemma}
+
+\begin{satz}{4.12}
+  Sei $\Omega\subset\R^d$ beschr\ae nkt, und sei $\cL u=-div(A(x)Du)+c(x)U$
+  gleichm\ae \s ig elliptisch, $c(x)\geq 0$ in $\Omega$,
+  $a_{ij},c\in\mathcal{L}(\Omega)$, $f\in\mathcal{L}^2(\Omega)$. Dann besitzt
+  $(VGL1)$ eine Eindeutige L\oe sung $u\in H^1_0(\Omega)$. Au\s erdem existiert eine
+  Konstante $c>0$ so dass $||u||_{H^1(\Omega)}\leq\hat c
+  ||f||_{\mathcal{L}^2(\Omega)}$.
+\end{satz}
+
+\begin{definition}[alternative def f\ue r schwach Lsg]{}
+  Sei $f\in H^{-1}(\Omega)$ Eine Funktion $u\in H^1_0(\Omega)$ hei\s t schwache
+  L\oe sung von $\RWPeins$, falls $B(u.\phi)=<f,\phi>_{H^{-1},H^1_0}$
+  $\forall\phi\in H^1_0(\Omega)$.
+\end{definition}
+
+\begin{bem}{}
+  Es existiert ein $\mu_u>0$, so dass $\forall \mu>\mu_0$ das RWP
+  \[\mathcal{L}u-\mu u = f\mbox{ in } \Omega\]
+  \[u=0\mbox{ auf }\partial\Omeag\]
+  f\ue r alle $f\in H^{-1}(\Omega)$ eine eindeutige schwache L\oe sung
+  $u\in H^1_0(\Omega)$ besitzt.
+\end{bem}
+
+\begin{lem}[Young-Ungl]{}
+  f\ue r $\alpha,\beta>0$, $\epsilon>0$ gilt:
+  \[\alpha\beta \leq \epsilon\alpha^2+\frac{1}{4\epsilon}\beta^2\]
+\end{lem}
+
+%4.4
+\subsection{Randwertprobleme mit inhomogenen Dirichlet-RB und/oder Robin-RB}
+\begin{enumerate}
+  \item Inhomogene Dirichlet-RB\\
+    \[
+      (RWP2)\begin{cases}
+      \cL u=f & \mbox{ in }\Omega\\
+      u=f & \mbox{ auf }\partial\Omega
+      \end{cases}
+    \]
+
+    $g:\partial\Omega \rightarrow \RR$ und es existiert stetige Fortsetzung
+    $\tilde g:\Omega\rightarrow \RR$ mit $\tilde g|_{\parital\Omega}=g$
+
+    \textbf{Superpositionsprinzip:} $u\in\C^2(\Omega)\cap C(\bar\Omega)$ l\oe
+    st $(RWP2)$ $\Leftrightarrow$
+    $v=u-\tilde g$ l\oe st das $RWP$
+    \[
+      \begin{cases}
+      \cL v=f-\cL\tilde g & \mbox{ in }\Omega\\
+      v=0 & \mbox{ auf }\partial\Omega
+      \end{cases}
+    \]
+
+    \textbf{Schwache Formulierung}:
+    \[
+      \int_\Omega Dv\cdot D\phi+b(x)\cdot Dv\phi +c(x)v\phi dx =\int_\Omega
+      f\phi dx - \intA(x)D\tilde g \cdot D\phi + b(x)\cdot D\tilde g \phi dx
+    \]
+    $\forall \phi \in H^1_0(\Omega)$ und gesucht ist: $v\in H^1_0(\Omega)$\\
+    $\Rightarrow$ $u=v+\tilde g$\\
+    $\Rightarrow$ $(VLG 2)$: $\int_\Omega A(x)Du\cdot D\phi+b(x)\cdot Du \phi+
+    cu\phi dx = \int_\Omega f\phi dx$ $\forall \phi\in H^1_0(\Omega)$
+    (Testraum)\\
+    $u\in \{ w\in H^1(\Omega) : \tau(w)=g \}$ (L\oe sungsraum) wobei
+    $tau:H^1(\Omega)\rightarrow \cL^2(\partial\Omega);
+    \tau(w)=w|_{\partial\Omega}$ $\forall w\in H^1(\Omega)\cap C(\bar \Omega)$
+  \item Inhomogene Robin-RB\\
+    \[
+      \begin{cases}
+      \cL u=f & \mbox{ in }\Omega\\
+        A(x)Du\cdot \nu+\mu u=g & \mbox{ auf }\partial\Omega
+      \end{cases}
+    \]
+    betrachte daf\ue r nun als Testfunktionen die $\phi\in C^\infty(\bar\Omega)$
+
+\end{enumerate}
+
+% vim: set ft=tex :

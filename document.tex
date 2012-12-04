@@ -62,18 +62,31 @@ DIV = 18
 
 \newboxedtheorem[boxcolor=green, background=white, titlebackground=white,
 titleboxcolor = black]{definition}{Definition}
+\newboxedtheorem[boxcolor=green, background=white, titlebackground=white,
+titleboxcolor = black]{defn}{Definition}
+
 \newboxedtheorem[boxcolor=orange, background=white, titlebackground=white,
 titleboxcolor = black]{prop}{Proposition}
+
 \newboxedtheorem[boxcolor=orange, background=white, titlebackground=white,
 titleboxcolor = black]{kor}{Korollar}
+
 \newboxedtheorem[boxcolor=blue, background=white, titlebackground=white,
 titleboxcolor = black]{satz}{Satz}
+\newboxedtheorem[boxcolor=blue, background=white, titlebackground=white,
+titleboxcolor = black]{thm}{Satz}
+
 \newboxedtheorem[boxcolor=red, background=white, titlebackground=white,
 titleboxcolor = black]{bsp}{Beispiel}
+
 \newboxedtheorem[boxcolor=orange, background=white, titlebackground=white,
 titleboxcolor = black]{lemma}{Lemma}
+\newboxedtheorem[boxcolor=orange, background=white, titlebackground=white,
+titleboxcolor = black]{lem}{Lemma}
+
 \newboxedtheorem[boxcolor=purple, background=white, titlebackground=white,
 titleboxcolor = black]{uebung}{Übung}
+
 \newboxedtheorem[boxcolor=gray, background=white, titlebackground=white,
  titleboxcolor = black]{bem}{Bemerkung}
 
@@ -107,11 +120,46 @@ titleboxcolor = black]{uebung}{Übung}
 \newcommand{\LSG}{(LSG)~}
 \DeclareMathOperator{\D}{D}
 
+\def\AA{\mathbb{A}}
+\def\CC{\mathbb{C}}
+\def\GG{\mathbb{G}}
+\def\NN{\mathbb{N}}
+\def\PP{\mathbb{P}}
+\def\RR{\mathbb{R}}
+\def\ZZ{\mathbb{Z}}
+
+\def\cA{\mathcal{A}}
+\def\cB{\mathcal{B}}
+\def\cC{\mathcal{C}}
+\def\cD{\mathcal{D}}
+\def\cE{\mathcal{E}}
+\def\cF{\mathcal{F}}
+\def\cG{\mathcal{G}}
+\def\cH{\mathcal{H}}
+\def\cI{\mathcal{I}}
+\def\cJ{\mathcal{J}}
+\def\cK{\mathcal{K}}
+\def\cL{\mathcal{L}}
+\def\cM{\mathcal{M}}
+\def\cN{\mathcal{N}}
+\def\cO{\mathcal{O}}
+\def\cP{\mathcal{P}}
+\def\cQ{\mathcal{Q}}
+\def\cR{\mathcal{R}}
+\def\cS{\mathcal{S}}
+\def\cT{\mathcal{T}}
+\def\cU{\mathcal{U}}
+\def\cV{\mathcal{V}}
+\def\cW{\mathcal{W}}
+\def\cX{\mathcal{X}}
+\def\cY{\mathcal{Y}}
+\def\cZ{\mathcal{Z}}
+
+\let\epsilon\varepsilon
+\let\phi\varphi
 
 %% Andere Abkürzungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\zshgd}{zusammenhängend}
-
-
 
 %% Bibliographiestil %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage{natbib}
@@ -119,7 +167,6 @@ titleboxcolor = black]{uebung}{Übung}
 \begin{document}
 
 \pagestyle{empty} %%Keine Kopf-/Fusszeilen auf den ersten Seiten.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Ihr Artikel                                                       %%
@@ -175,7 +222,6 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
   \]
 	gegeben und $u:\Omega \to \R$ gesucht.
 \end{definition}
-
 
 \begin{definition}[Klassifikation PDEs]{}
 	\begin{enumerate}
@@ -407,6 +453,8 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 	\RWPh konsistent und stabil. Dann konvergent.\\ 
 	Ist es zus\ae tzlich konsistent von Ordnung $P$ und $u\in C^{p+1}(\bO)$. Dann konvergent von Ordnung $P$. 
 \end{satz}
+
+\input{new.tex}
 
 \clearpage
 \section{Alle Definitionen}
