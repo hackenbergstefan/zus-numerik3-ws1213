@@ -35,10 +35,12 @@
 \subsection{Randwertprobleme mit inhomogenen Dirichlet-RB und/oder Robin-RB}
 \begin{enumerate}
   \item Inhomogene Dirichlet-RB\\
-    \[(RWP2)\begin{cases}
-    \cL u=f & \mbox{ in }\Omega\\
-    u=f & \mbox{ auf }\partial\Omega
-    \end{cases}\]
+    \[
+      (RWP2)\begin{cases}
+      \cL u=f & \mbox{ in }\Omega\\
+      u=f & \mbox{ auf }\partial\Omega
+      \end{cases}
+    \]
 
     $g:\partial\Omega \rightarrow \RR$ und es existiert stetige Fortsetzung
     $\tilde g:\Omega\rightarrow \RR$ mit $\tilde g|_{\parital\Omega}=g$
@@ -46,31 +48,35 @@
     \textbf{Superpositionsprinzip:} $u\in\C^2(\Omega)\cap C(\bar\Omega)$ l\oe
     st $(RWP2)$ $\Leftrightarrow$
     $v=u-\tilde g$ l\oe st das $RWP$
-    \[\begin{cases}
-    \cL v=f-\cL\tilde g & \mbox{ in }\Omega\\
-    v=0 & \mbox{ auf }\partial\Omega
-    \end{cases}\]
+    \[
+      \begin{cases}
+      \cL v=f-\cL\tilde g & \mbox{ in }\Omega\\
+      v=0 & \mbox{ auf }\partial\Omega
+      \end{cases}
+    \]
 
-    \textbf{Schwach Formulierung}:
-    \[\int_\Omega Dv\cdot D\phi+b(x)\cdot Dv\phi +c(x)v\phi dx =\int_\Omega
-    f\phi dx - \intA(x)D\tilde g \cdot D\phi + b(x)\cdot D\tilde g \phi dx\]
+    \textbf{Schwache Formulierung}:
+    \[
+      \int_\Omega Dv\cdot D\phi+b(x)\cdot Dv\phi +c(x)v\phi dx =\int_\Omega
+      f\phi dx - \intA(x)D\tilde g \cdot D\phi + b(x)\cdot D\tilde g \phi dx
+    \]
     $\forall \phi \in H^1_0(\Omega)$ und gesucht ist: $v\in H^1_0(\Omega)$\\
     $\Rightarrow$ $u=v+\tilde g$\\
-    $\Rightarrow$ $(VLG 2)$: $\int_\Omega A(x)Du\cdot D\phi+b(x)\cdot Du \phi+ 
-    cu\phi dx = \int_\Omega f\phi dx$ $\forall \phi\in H^1_0(\Omega)$ 
+    $\Rightarrow$ $(VLG 2)$: $\int_\Omega A(x)Du\cdot D\phi+b(x)\cdot Du \phi+
+    cu\phi dx = \int_\Omega f\phi dx$ $\forall \phi\in H^1_0(\Omega)$
     (Testraum)\\
     $u\in \{ w\in H^1(\Omega) : \tau(w)=g \}$ (L\oe sungsraum) wobei
     $tau:H^1(\Omega)\rightarrow \cL^2(\partial\Omega);
     \tau(w)=w|_{\partial\Omega}$ $\forall w\in H^1(\Omega)\cap C(\bar \Omega)$
-  \item Inhomogen Robin-RB\\
-    \[\begin{cases}
-    \cL u=f & \mbox{ in }\Omega\\
-      A(x)Du\cdot \nu+\mu u=g & \mbox{ auf }\partial\Omega
-    \end{cases}\]
-    betrachte nun als Testfunktionen die $\phi\in C^\infty(\bar\Omega)$
+  \item Inhomogene Robin-RB\\
+    \[
+      \begin{cases}
+      \cL u=f & \mbox{ in }\Omega\\
+        A(x)Du\cdot \nu+\mu u=g & \mbox{ auf }\partial\Omega
+      \end{cases}
+    \]
+    betrachte daf\ue r nun als Testfunktionen die $\phi\in C^\infty(\bar\Omega)$
 
 \end{enumerate}
-
-
 
 % vim: set ft=tex :
