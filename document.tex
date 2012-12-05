@@ -247,6 +247,37 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 	\end{enumerate}
 \end{definition}
 
+\begin{bsp}{}
+  \begin{enumerate}
+    \item \emph{Poisson-Gleichung}
+      \[
+        \begin{cases}
+          -\triangle u=f & \mbox{ in }\Omega\\
+          u(x)=g(x) & \mbox{ auf }\partial\Omega
+        \end{cases}
+      \]
+      ist PDE zweiter Ordnung, linear\\
+      für $f=0$: Homogene PDE $-\triangle u=0$ \emph{Laplace-Gleichung}
+    \item \emph{Wellengleichung}
+      \[
+        \begin{cases}
+          \frac{\partial^2u}{\partial t^2}-\triangle u=f(t,x) 
+            & \mbox{ in }\Omega\\
+          \mbox{RB, AB} & \mbox{ auf }\partial\Omega
+        \end{cases}
+      \]
+    \item \emph{Navier-Stokes-Gleichung}
+      \[
+        \begin{cases}
+          \frac{\partial v}{\partial t} )
+            = \nu\triangle v-(\nu\cdot\nabla)-\nabla p+f
+            & \mbox{ in }\Omega\\
+          0=div(v) \\ % TODO: declare as math operator
+          \mbox{RB, AB} & \mbox{ auf }\partial\Omega
+        \end{cases}
+      \]
+  \end{enumerate}
+\end{bsp}
 % Beispiele ausgelassen
 
 \subsection{Typeneinteilung für PDEs 2. Ordnung}
@@ -279,10 +310,23 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 
 \begin{bsp}{}
 	\begin{enumerate}
-	  \item Poission-Gleichung mit $M = \begin{pmatrix}-1 &  & \\&\ddots& \\ && -1\end{pmatrix}$ ist elliptisch.
-	  \item Wärmeleitungs-Gleichung mit $M = \begin{pmatrix}-1 & && \\&\ddots&& \\ && -1&\\&&& 0\end{pmatrix}$
+	  \item Poission-Gleichung 
+      \[
+        -\triangle u=f
+      \]
+      mit $M = \begin{pmatrix}-1 &  & \\&\ddots& \\ && -1\end{pmatrix}$ ist 
+      elliptisch.
+	  \item Wärmeleitungs-Gleichung 
+      \[
+        \frac{\partial u}{\partial t}-\triangle u=0
+      \]
+      mit $M = \begin{pmatrix}-1 & && \\&\ddots&& \\ && -1&\\&&& 0\end{pmatrix}$
 	  	ist parabolisch.
-	  \item Wellengleichung mit $M = \begin{pmatrix}-1 & && \\&\ddots&& \\ && -1&\\&&& 1\end{pmatrix}$
+	  \item Wellengleichung 
+      \[
+        \frac{\partial^2u}{\partial t^2}-\triangle u=0
+      \]
+      mit $M = \begin{pmatrix}-1 & && \\&\ddots&& \\ && -1&\\&&& 1\end{pmatrix}$
 	  	ist hyperbolisch.
 	\end{enumerate}
 \end{bsp}
@@ -319,7 +363,7 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 \end{bem}
 
 
-\begin{definition}{}
+\begin{definition}[Alternativ]{}
 	Sei $\Omega\subset \Rn$ offen, \zshgd, beschr\ae nkt. $\Omega$ geh\oe rt zur Klasse $C^{k,\alpha}$,
 	$k\in \N_{0}, \alpha\in [0,1]$, wenn es endlich viele lokale Koordinatensysteme $s_1,\ldots,s_m$,
 	Funktionen $\varphi_1,\ldots,\varphi_m$, sowie $r_i>0,h_i>0$, $i=1\ldots m$ existieren, sodass
@@ -382,7 +426,7 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 \begin{kor}{2.2}
 	Sei $c\geq 0, f\leq 0$ in $\Omega$. Dann
   \[
-    \sup_{\bO} u \leq \sup_{\RO} \max{u,0}\,.
+    \sup_{\bO} u \leq \sup_{\RO} \max\{u,0\}\,.
   \]
 \end{kor}
 
@@ -409,12 +453,12 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 \subsection{Differenzenverfahren für die Poissongleichung in $\Omega = (a,b)$}
 
 \begin{plainboitethm}{Differenzenverfahren}
-	$$\text{\RWP* } \begin{cases} -\Delta u = f & \text{in }\Omega \\ u(a) = u_a \\ u(b) = u_b\end{cases}$$
+	$$\text{\RWPeins } \begin{cases} -\Delta u = f & \text{in }\Omega \\ u(a) = u_a \\ u(b) = u_b\end{cases}$$
 	\paragraph{1. Diskretisierung}
 	$h = \frac{b-a}{n}$, $\Omega_h = \{x_i = a+ih :\ i=1\dots n-1\}$, $\RO_h = \{x_0 = a, x_n=b\}$.
 	\paragraph{2. Approximation der Ableitung}
 	$$u''(x_i) \approx \frac{u(x_i+h) - 2u(x_i) + u_i(x_i - h)}{h^2} =: \Delta_hu(x_i)$$
-	bezeichne $$\text{\RWPh*}\ \begin{cases}-\Delta_h u_h = f & \text{in }\Omega_h\\
+	bezeichne $$\text{\RWPheins}\ \begin{cases}-\Delta_h u_h = f & \text{in }\Omega_h\\
 		u_h = g &\text{auf }\RO_h\end{cases}$$
 	\paragraph{3. Aufstellen des linearen Gleichungssystems mit OBdA $\Omega = (0,1)$}
 	$$\frac{1}{h^2} \begin{bmatrix}2 & -1\\
@@ -454,14 +498,79 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 	Ist es zus\ae tzlich konsistent von Ordnung $P$ und $u\in C^{p+1}(\bO)$. Dann konvergent von Ordnung $P$. 
 \end{satz}
 
+\begin{lem}{3.2}
+  Das Differenzenverfahren \RWPheins ist konsistent von Ordnung 2. Es gilt 
+  \[
+    \Vert \triangle_h R_hu-R_h\triangle u\Vert_h \leq \frac{1}{12}\Vert u
+    \Vert_{C^4(\bar\Omega)} h^2
+  \]
+  für alle $u\in C^4(\bar\Omega)$
+\end{lem}
+
+\begin{defn}[M-Matrix]{}
+    
+\end{defn}
+
+\begin{defn}[Schwach diagonal dominant / diagonal dominant]
+    
+\end{defn}
+
+\begin{bem}
+  $-\tilde\triangle_h$ ist schwach diagonal dominant
+\end{bem}
+
+\begin{defn}[reduzibel/irreduzibel]{}
+    
+\end{defn}
+
+\begin{defn}[irreduzibel diagonal dominant]{}
+    
+\end{defn}
+
+\begin{lem}{3.3}
+    
+\end{lem}
+
+\begin{lem}{3.4}
+    
+\end{lem}
+
+\begin{lem}{3.5}
+    
+\end{lem}
+
+\begin{thm}{3.6}
+    
+\end{thm}
+
+\subsection{Differenzenmethode für Poissongleichungen in $\Omeag=(0,1)\times(0,1)$}
+
+\subsection{Diskretisierung in einem Beschränkten Gebiet in $\R^2$}
+\subsubsection{Shortley-Weller-Diskretisierung}
+\subsubsection{Interpolation}
+
+\subsection{Allgemeine Dgl-Operatoren}
+
+\subsection{Differenzenverfahren für Parabolische DGLn}
+\subsection{Differenzenverfahren für Hyperbolische DGLn}
+
+\section{Schwache Lösungstheorie für elliptische partielle PDE}
+
+\subsection{Grundlagen aus der Funktionalanalysis}
+\subsubsection{Sobolev-Räume}
+\subsubsection{Variationsgleichung}
+
+\subsection{Eindeutige Lösbarkeit elliptischer PDE}
+
+
 \input{new.tex}
 
-\clearpage
-\section{Alle Definitionen}
-\input{inp_definition.tex}
+%\clearpage
+%\section{Alle Definitionen}
+%\input{inp_definition.tex}
 
 
-\clearpage
-\section{Alle Sätze}
+%\clearpage
+%\section{Alle Sätze}
 
 \end{document}
