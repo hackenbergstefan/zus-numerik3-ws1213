@@ -1,7 +1,7 @@
 %% Basierend auf einer TeXnicCenter-Vorlage von Mark Müller
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Wählen Sie die Optionen aus, indem Sie % vor der Option entfernen  
+% Wählen Sie die Optionen aus, indem Sie % vor der Option entfernen
 % Dokumentation des KOMA-Script-Packets: scrguide
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -17,14 +17,14 @@
 %twoside,							% Doppelseiten
 %twocolumn,						% zweispaltiger Satz
 halfparskip*,				% Absatzformatierung s. scrguide 3.1
-%headsepline,					% Trennline zum Seitenkopf	
+%headsepline,					% Trennline zum Seitenkopf
 %footsepline,					% Trennline zum Seitenfuß
 titlepage,						% Titelei auf eigener Seite
 %normalheadings,			% Überschriften etwas kleiner (smallheadings)
 %idxtotoc,						% Index im Inhaltsverzeichnis
 %liststotoc,					% Abb.- und Tab.verzeichnis im Inhalt
 %bibtotoc,						% Literaturverzeichnis im Inhalt
-%abstracton,					% Überschrift über der Zusammenfassung an	
+%abstracton,					% Überschrift über der Zusammenfassung an
 %leqno,   						% Nummerierung von Gleichungen links
 %fleqn,								% Ausgabe von Gleichungen linksbündig
 %draft								% überlangen Zeilen in Ausgabe gekennzeichnet
@@ -33,7 +33,7 @@ DIV = 18
 {scrartcl}
 
 %\pagestyle{empty}		% keine Kopf und Fußzeile (k. Seitenzahl)
-%\pagestyle{headings}	% lebender Kolumnentitel  
+%\pagestyle{headings}	% lebender Kolumnentitel
 
 
 %% Deutsche Anpassungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,40 +120,86 @@ titleboxcolor = black]{uebung}{Übung}
 \newcommand{\LSG}{(LSG)~}
 \DeclareMathOperator{\D}{D}
 
-\def\AA{\mathbb{A}}
-\def\CC{\mathbb{C}}
-\def\GG{\mathbb{G}}
-\def\NN{\mathbb{N}}
-\def\PP{\mathbb{P}}
-\def\RR{\mathbb{R}}
-\def\ZZ{\mathbb{Z}}
+%\def\A{\mathbb{A}}
+%\def\B{\mathbb{B}}
+%\def\C{\mathbb{C}}
+%\def\D{\mathbb{D}}
+%\def\E{\mathbb{E}}
+%\def\F{\mathbb{F}}
+%\def\G{\mathbb{G}}
+%\def\H{\mathbb{H}}
+%\def\I{\mathbb{I}}
+%\def\J{\mathbb{J}}
+%\def\K{\mathbb{K}}
+%\def\L{\mathbb{L}}
+%\def\M{\mathbb{M}}
+%\def\N{\mathbb{N}}
+%\def\O{\mathbb{O}}
+%\def\P{\mathbb{P}}
+%\def\Q{\mathbb{Q}}
+%\def\R{\mathbb{R}}
+%\def\S{\mathbb{S}}
+%\def\T{\mathbb{T}}
+%\def\U{\mathbb{U}}
+%\def\V{\mathbb{V}}
+%\def\W{\mathbb{W}}
+%\def\X{\mathbb{X}}
+%\def\Y{\mathbb{Y}}
+%\def\Z{\mathbb{Z}}
 
-\def\cA{\mathcal{A}}
-\def\cB{\mathcal{B}}
-\def\cC{\mathcal{C}}
-\def\cD{\mathcal{D}}
-\def\cE{\mathcal{E}}
-\def\cF{\mathcal{F}}
-\def\cG{\mathcal{G}}
-\def\cH{\mathcal{H}}
-\def\cI{\mathcal{I}}
-\def\cJ{\mathcal{J}}
-\def\cK{\mathcal{K}}
+%\def\cA{\mathcal{A}}
+%\def\cB{\mathcal{B}}
+%\def\cC{\mathcal{C}}
+%\def\cD{\mathcal{D}}
+%\def\cE{\mathcal{E}}
+%\def\cF{\mathcal{F}}
+%\def\cG{\mathcal{G}}
+%\def\cH{\mathcal{H}}
+%\def\cI{\mathcal{I}}
+%\def\cJ{\mathcal{J}}
+%\def\cK{\mathcal{K}}
 \def\cL{\mathcal{L}}
-\def\cM{\mathcal{M}}
-\def\cN{\mathcal{N}}
-\def\cO{\mathcal{O}}
-\def\cP{\mathcal{P}}
-\def\cQ{\mathcal{Q}}
-\def\cR{\mathcal{R}}
-\def\cS{\mathcal{S}}
-\def\cT{\mathcal{T}}
-\def\cU{\mathcal{U}}
-\def\cV{\mathcal{V}}
-\def\cW{\mathcal{W}}
-\def\cX{\mathcal{X}}
-\def\cY{\mathcal{Y}}
-\def\cZ{\mathcal{Z}}
+%\def\cM{\mathcal{M}}
+%\def\cN{\mathcal{N}}
+%\def\cO{\mathcal{O}}
+%\def\cP{\mathcal{P}}
+%\def\cQ{\mathcal{Q}}
+%\def\cR{\mathcal{R}}
+%\def\cS{\mathcal{S}}
+%\def\cT{\mathcal{T}}
+%\def\cU{\mathcal{U}}
+%\def\cV{\mathcal{V}}
+%\def\cW{\mathcal{W}}
+%\def\cX{\mathcal{X}}
+%\def\cY{\mathcal{Y}}
+%\def\cZ{\mathcal{Z}}
+
+%\def\sA{\mathscr{A}}
+%\def\sB{\mathscr{B}}
+%\def\sC{\mathscr{C}}
+%\def\sD{\mathscr{D}}
+%\def\sE{\mathscr{E}}
+%\def\sF{\mathscr{F}}
+%\def\sG{\mathscr{G}}
+%\def\sH{\mathscr{H}}
+%\def\sI{\mathscr{I}}
+%\def\sJ{\mathscr{J}}
+%\def\sK{\mathscr{K}}
+%\def\sL{\mathscr{L}}
+%\def\sM{\mathscr{M}}
+%\def\sN{\mathscr{N}}
+%\def\sO{\mathscr{O}}
+%\def\sP{\mathscr{P}}
+%\def\sQ{\mathscr{Q}}
+%\def\sR{\mathscr{R}}
+%\def\sS{\mathscr{S}}
+%\def\sT{\mathscr{T}}
+%\def\sU{\mathscr{U}}
+%\def\sV{\mathscr{V}}
+%\def\sW{\mathscr{W}}
+%\def\sX{\mathscr{X}}
+%\def\sY{\mathscr{Y}}
+%\def\sZ{\mathscr{Z}}
 
 \let\epsilon\varepsilon
 \let\phi\varphi
@@ -172,7 +218,7 @@ titleboxcolor = black]{uebung}{Übung}
 %% Ihr Artikel                                                       %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% eigene Titelseitengestaltung %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%% eigene Titelseitengestaltung %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{titlepage}
 %Einsetzen der TXC Vorlage "Deckblatt" möglich
 %\end{titlepage}
@@ -261,7 +307,7 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
     \item \emph{Wellengleichung}
       \[
         \begin{cases}
-          \frac{\partial^2u}{\partial t^2}-\triangle u=f(t,x) 
+          \frac{\partial^2u}{\partial t^2}-\triangle u=f(t,x)
             & \mbox{ in }\Omega\\
           \mbox{RB, AB} & \mbox{ auf }\partial\Omega
         \end{cases}
@@ -310,19 +356,19 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 
 \begin{bsp}{}
 	\begin{enumerate}
-	  \item Poission-Gleichung 
+	  \item Poission-Gleichung
       \[
         -\triangle u=f
       \]
-      mit $M = \begin{pmatrix}-1 &  & \\&\ddots& \\ && -1\end{pmatrix}$ ist 
+      mit $M = \begin{pmatrix}-1 &  & \\&\ddots& \\ && -1\end{pmatrix}$ ist
       elliptisch.
-	  \item Wärmeleitungs-Gleichung 
+	  \item Wärmeleitungs-Gleichung
       \[
         \frac{\partial u}{\partial t}-\triangle u=0
       \]
       mit $M = \begin{pmatrix}-1 & && \\&\ddots&& \\ && -1&\\&&& 0\end{pmatrix}$
 	  	ist parabolisch.
-	  \item Wellengleichung 
+	  \item Wellengleichung
       \[
         \frac{\partial^2u}{\partial t^2}-\triangle u=0
       \]
@@ -349,7 +395,7 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
         \|u\|_{C^k(\bO,\R^m)} := \sum_{|\alpha|\leq k} \|\D^\alpha u\|_{C(\bO,\R^m)}\,.
       \]
 	   \item $C^{0,\alpha}(\bO,\R^m) = \{u\in C(\bO,\R^m):\ \|u\|_{C^{0,\alpha}(\bO,\R^m)} < \infty\}$
-	   	mit 
+	   	mit
       \[
         \|u\|_{C^{0,\alpha}(\bO,\R^m)} := \sup_{x\neq y\in \bO} \frac{\|u(x)-u(y)\|}{\|x-y\|^\alpha}\,,
       \]
@@ -372,9 +418,9 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 	  	\left[\begin{array}{c}y_1\\\vdots\\y_{n-1}\end{array}\right]:\ |y_i|\leq r_j, i=1\ldots n-1\right\}$
 	  \item Zu jedem $x\in \partial \Omega$ gibt es $j\in \{1,\ldots,m\}$, sodass
 	  	$x = \begin{bmatrix}y\\\varphi_j(y)\end{bmatrix}$, $y\in \Omega_{r_j}$.
-	  \item $\begin{bmatrix} y \\ y_n\end{bmatrix} \in \Omega \Leftrightarrow \exists j:\ y \in \bO_{r_j}$ mit 
+	  \item $\begin{bmatrix} y \\ y_n\end{bmatrix} \in \Omega \Leftrightarrow \exists j:\ y \in \bO_{r_j}$ mit
 	  	$\varphi_j(y) < y_n < \varphi_j(y) + h_j$\\
-	  	$\begin{bmatrix} y \\ y_n\end{bmatrix} \not\in \Omega \Leftrightarrow \forall j:\ y \in \bO_{r_j}$ gilt 
+	  	$\begin{bmatrix} y \\ y_n\end{bmatrix} \not\in \Omega \Leftrightarrow \forall j:\ y \in \bO_{r_j}$ gilt
 	  	 $\varphi_j(y)- h_j < y_n < \varphi_j(y)$
 	\end{enumerate}
 \end{definition}
@@ -383,13 +429,13 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
   \[
     \text{(RWP)}\begin{cases} \L u = f & \text{ in }\Omega \\ R u = g & \text{ auf } \partial \Omega\end{cases}
   \]
-  mit 
+  mit
   \[
-    \L u = -\sum_{i,j=1}^n a_{ij}(x)\partial_{x_i}\partial_{x_j} u + 
+    \L u = -\sum_{i,j=1}^n a_{ij}(x)\partial_{x_i}\partial_{x_j} u +
     \sum_{i=1}^n b_i(x)\partial_{x_i}u + c(x) u
   \]
 	und $a_{ij}, b_i, c, f:\Omega \to \R$, $g:\partial \Omega \to \R$.
-	Weiter $A(x) := \begin{bmatrix} a_{11}(x) & \dots & a_{1n}(x)\\ \vdots & \ddots & \vdots \\ 
+	Weiter $A(x) := \begin{bmatrix} a_{11}(x) & \dots & a_{1n}(x)\\ \vdots & \ddots & \vdots \\
 		a_{n1}(x)&\dots&a_{nn}(x)\end{bmatrix}$\\
 	\paragraph{Randbedingungen:}
 		\begin{description}
@@ -403,12 +449,12 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
       \[
         \xi^T A(x)\xi \geq \lambda_0  \|\xi\|^2 \qquad \forall \xi \in \Rn,\ \forall x\in \Omega\,.
       \]
-	  \item $a_{ij}, b_i, c, f \in C(\bO), g \in C(\RO)$. 
+	  \item $a_{ij}, b_i, c, f \in C(\bO), g \in C(\RO)$.
 	\end{enumerate}
 \end{definition}
 
 \begin{definition}[Klassische L\oe sung]{}
-	$u\in \Ccap$ hei\s t \emph{klassische L\oe sung} von (RWP) mit $Ru = u$, wenn die 
+	$u\in \Ccap$ hei\s t \emph{klassische L\oe sung} von (RWP) mit $Ru = u$, wenn die
 	Gleichungen von (RWP) in jedem Punkt von $\Omega$ bzw. $\RO$ erf\ue llt sind.
 \end{definition}
 
@@ -416,7 +462,7 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 \subsection{Eindeutigkeit}
 \begin{satz}[Maximums Prinzip]{2.1}
 	$u\in \Ccap$ L\oe sung von (RWP) mit $f\leq 0$ in $\Omega$ und $c(x) \equiv 0$.\\
-	Dann 
+	Dann
   \[
     \sup_{x\in \bO} u(x) = \sup_{x\in \RO} u(x) = \sup_{x\in \RO} g(x)\,.
   \]
@@ -469,7 +515,7 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 		 &  &  &  & -1 & 2
 	\end{bmatrix}
 	\begin{bmatrix} u_h(x_1) \\ \\[8pt] \vdots\\[8pt]  \\ u_h(x_{n-1})\end{bmatrix}
-	= 
+	=
 	\begin{bmatrix} f(x_1) + \frac{g_0}{h^2} \\ f(x_2) \\ \vdots\\[-6pt]\vdots \\ f(x_{n-2})\\f(x_{n-1}) + \frac{g_1}{h^2}
 	\end{bmatrix}$$
 	bezeichne $\text{(LSG 1)}\ -\tilde\Delta_u \tilde u_h = \tilde f_h$.
@@ -489,17 +535,17 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 
 \begin{definition}[Stabil]{}
 	\RWPh hei\s t \emph{stabil}, falls $\tilde\L_h$ invertierbar und $\exists h_0 > 0:$
-	$$\sup_{0<h\leq h_0}\|\tilde\L_h^{-1}\| < \infty\,.$$ 
+	$$\sup_{0<h\leq h_0}\|\tilde\L_h^{-1}\| < \infty\,.$$
 \end{definition}
 
 
 \begin{satz}{3.1}
-	\RWPh konsistent und stabil. Dann konvergent.\\ 
-	Ist es zus\ae tzlich konsistent von Ordnung $P$ und $u\in C^{p+1}(\bO)$. Dann konvergent von Ordnung $P$. 
+	\RWPh konsistent und stabil. Dann konvergent.\\
+	Ist es zus\ae tzlich konsistent von Ordnung $P$ und $u\in C^{p+1}(\bO)$. Dann konvergent von Ordnung $P$.
 \end{satz}
 
 \begin{lem}{3.2}
-  Das Differenzenverfahren \RWPheins ist konsistent von Ordnung 2. Es gilt 
+  Das Differenzenverfahren \RWPheins ist konsistent von Ordnung 2. Es gilt
   \[
     \Vert \triangle_h R_hu-R_h\triangle u\Vert_h \leq \frac{1}{12}\Vert u
     \Vert_{C^4(\bar\Omega)} h^2
@@ -508,39 +554,39 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 \end{lem}
 
 \begin{defn}[M-Matrix]{}
-    
+
 \end{defn}
 
-\begin{defn}[Schwach diagonal dominant / diagonal dominant]
-    
+\begin{defn}[Schwach diagonal dominant / diagonal dominant]{}
+
 \end{defn}
 
-\begin{bem}
+\begin{bem}{}
   $-\tilde\triangle_h$ ist schwach diagonal dominant
 \end{bem}
 
 \begin{defn}[reduzibel/irreduzibel]{}
-    
+
 \end{defn}
 
 \begin{defn}[irreduzibel diagonal dominant]{}
-    
+
 \end{defn}
 
 \begin{lem}{3.3}
-    
+
 \end{lem}
 
 \begin{lem}{3.4}
-    
+
 \end{lem}
 
 \begin{lem}{3.5}
-    
+
 \end{lem}
 
 \begin{thm}{3.6}
-    
+
 \end{thm}
 
 \subsection{Differenzenmethode für Poissongleichungen in $\Omeag=(0,1)\times(0,1)$}
@@ -558,13 +604,92 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 
 \subsection{Grundlagen aus der Funktionalanalysis}
 \subsubsection{Sobolev-Räume}
-\subsubsection{Variationsgleichung}
+\subsection{Variationsgleichung}
 
 \subsection{Eindeutige Lösbarkeit elliptischer PDE}
 
+\begin{lemma}{4.11}
+  Falls $b(x)=0$ und $c(s)\geq 0$ in $\Omega$, dann ist $B$ in $(VGL1)'$
+  koerzitiv.
+\end{lemma}
 
-\input{new.tex}
+\begin{satz}{4.12}
+  Sei $\Omega\subset\R^d$ beschr\ae nkt, und sei $\cL u=-div(A(x)Du)+c(x)U$
+  gleichm\ae \s ig elliptisch, $c(x)\geq 0$ in $\Omega$,
+  $a_{ij},c\in\mathcal{L}(\Omega)$, $f\in\mathcal{L}^2(\Omega)$. Dann besitzt
+  $(VGL1)$ eine Eindeutige L\oe sung $u\in H^1_0(\Omega)$. Au\s erdem existiert eine
+  Konstante $c>0$ so dass $||u||_{H^1(\Omega)}\leq\hat c
+  ||f||_{\mathcal{L}^2(\Omega)}$.
+\end{satz}
 
+\begin{definition}[alternative def f\ue r schwach Lsg]{}
+  Sei $f\in H^{-1}(\Omega)$ Eine Funktion $u\in H^1_0(\Omega)$ hei\s t schwache
+  L\oe sung von $\RWPeins$, falls $B(u.\phi)=<f,\phi>_{H^{-1},H^1_0}$
+  $\forall\phi\in H^1_0(\Omega)$.
+\end{definition}
+
+\begin{bem}{}
+  Es existiert ein $\mu_u>0$, so dass $\forall \mu>\mu_0$ das RWP
+  \[\mathcal{L}u-\mu u = f\mbox{ in } \Omega\]
+  \[u=0\mbox{ auf }\partial\Omega\]
+  f\ue r alle $f\in H^{-1}(\Omega)$ eine eindeutige schwache L\oe sung
+  $u\in H^1_0(\Omega)$ besitzt.
+\end{bem}
+
+\begin{lem}[Young-Ungl]{}
+  f\ue r $\alpha,\beta>0$, $\epsilon>0$ gilt:
+  \[\alpha\beta \leq \epsilon\alpha^2+\frac{1}{4\epsilon}\beta^2\]
+\end{lem}
+
+%4.4
+\subsection{Randwertprobleme mit inhomogenen Dirichlet-RB und/oder Robin-RB}
+\begin{enumerate}
+  \item Inhomogene Dirichlet-RB\\
+    \[
+      (RWP2)\begin{cases}
+      \cL u=f & \mbox{ in }\Omega\\
+      u=f & \mbox{ auf }\partial\Omega
+      \end{cases}
+    \]
+
+    $g:\partial\Omega \rightarrow \R$ und es existiert stetige Fortsetzung
+    $\tilde g:\Omega\rightarrow \R$ mit $\tilde g|_{\partial\Omega}=g$
+
+    \textbf{Superpositionsprinzip:} $u\in\C^2(\Omega)\cap C(\bar\Omega)$ l\oe
+    st $(RWP2)$ $\Leftrightarrow$
+    $v=u-\tilde g$ l\oe st das $RWP$
+    \[
+      \begin{cases}
+      \cL v=f-\cL\tilde g & \mbox{ in }\Omega\\
+      v=0 & \mbox{ auf }\partial\Omega
+      \end{cases}
+    \]
+
+    \textbf{Schwache Formulierung}:
+    \[
+      \int_\Omega Dv\cdot D\phi+b(x)\cdot Dv\phi +c(x)v\phi dx =\int_\Omega
+      f\phi dx - \int A(x)D\tilde g \cdot D\phi + b(x)\cdot D\tilde g \phi dx
+    \]
+    $\forall \phi \in H^1_0(\Omega)$ und gesucht ist: $v\in H^1_0(\Omega)$\\
+    $\Rightarrow$ $u=v+\tilde g$\\
+    $\Rightarrow$ $(VLG 2)$: $\int_\Omega A(x)Du\cdot D\phi+b(x)\cdot Du \phi+
+    cu\phi dx = \int_\Omega f\phi dx$ $\forall \phi\in H^1_0(\Omega)$
+    (Testraum)\\
+    $u\in \{ w\in H^1(\Omega) : \tau(w)=g \}$ (L\oe sungsraum) wobei
+    $tau:H^1(\Omega)\rightarrow \cL^2(\partial\Omega);
+    \tau(w)=w|_{\partial\Omega}$ $\forall w\in H^1(\Omega)\cap C(\bar \Omega)$
+  \item Inhomogene Robin-RB\\
+    \[
+      \begin{cases}
+      \cL u=f & \mbox{ in }\Omega\\
+        A(x)Du\cdot \nu+\mu u=g & \mbox{ auf }\partial\Omega
+      \end{cases}
+    \]
+    betrachte dafür nun als Testfunktionen die $\phi\in C^\infty(\bar\Omega)$
+
+\end{enumerate}
+
+% deactivated
 %\clearpage
 %\section{Alle Definitionen}
 %\input{inp_definition.tex}
