@@ -15,11 +15,11 @@ grep -r --exclude='TODO' --exclude='work' "TODO" * > TODO
 wc -l TODO
 echo
 
-tmux new-session -d -s tex
-tmux new-window -t tex:2 -n 'latexmk' 'latexmk -pvc -pdf document.tex'
-tmux new-window -t tex:3 -n 'log' 'vim document.log'
-tmux select-window -t tex:1
-tmux attach-session -t tex
+tmux new-session -d -s texNum
+tmux new-window -t texNum:2 -n 'latexmk' 'latexmk -pvc -pdf document.tex'
+tmux new-window -t texNum:3 -n 'log' 'vim document.log'
+tmux select-window -t texNum:1
+tmux attach-session -t texNum
 
 #git commit -a -m "automatic commit"
 git commit -a

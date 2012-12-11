@@ -119,6 +119,7 @@ titleboxcolor = black]{uebung}{Übung}
 \newcommand{\LSGeins}{(LSG 1)~}
 \newcommand{\LSG}{(LSG)~}
 \DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\Spann}{Spann}
 
 %\def\A{\mathbb{A}}
 %\def\B{\mathbb{B}}
@@ -135,7 +136,7 @@ titleboxcolor = black]{uebung}{Übung}
 %\def\M{\mathbb{M}}
 %\def\N{\mathbb{N}}
 %\def\O{\mathbb{O}}
-%\def\P{\mathbb{P}}
+\def\P{\mathbb{P}}
 %\def\Q{\mathbb{Q}}
 %\def\R{\mathbb{R}}
 %\def\S{\mathbb{S}}
@@ -167,7 +168,7 @@ titleboxcolor = black]{uebung}{Übung}
 %\def\cR{\mathcal{R}}
 %\def\cS{\mathcal{S}}
 %\def\cT{\mathcal{T}}
-%\def\cU{\mathcal{U}}
+\def\cU{\mathcal{U}}
 %\def\cV{\mathcal{V}}
 %\def\cW{\mathcal{W}}
 %\def\cX{\mathcal{X}}
@@ -185,7 +186,7 @@ titleboxcolor = black]{uebung}{Übung}
 %\def\sI{\mathscr{I}}
 %\def\sJ{\mathscr{J}}
 %\def\sK{\mathscr{K}}
-%\def\sL{\mathscr{L}}
+\def\sL{\mathscr{L}}
 %\def\sM{\mathscr{M}}
 %\def\sN{\mathscr{N}}
 %\def\sO{\mathscr{O}}
@@ -689,12 +690,160 @@ Sei $\Omega \subset \Rn$ offen. Eine \emph{partielle DGL} $k$-ter Ordnung hat di
 
 \end{enumerate}
 
+%TODO: where is VGL2 defined?
 \begin{thm}{4.13}
   Sei $B:H^1_0(\Omega)\times H^1_0(\Omega)\rightarrow \R$ beschränkt und 
   koerzitiv. $(VGL2)$ hat eine eindeutige Lösung $u\in\{w\in
   H^1(\Omega)|\tau(w)=g\forall w\partial \Omega\}$ genau dann, wenn ein
-  $u_0\inH^1(\Omega)$ existiert, so dass $\tau(u_0)=g$.
+  $u_0\in H^1(\Omega)$ existiert, so dass $\tau(u_0)=g$.
 \end{thm}
+
+\subsection{Approximation von Variationsgleichungen}
+\begin{defn}[verfahren von Ritz]{}
+  
+\end{defn}
+\begin{thm}[Lemma von C´ea]{4.14}
+
+\end{thm}
+
+Wahl des diskreten Teilraums:\\
+\begin{enumerate}
+  \item Eigenfunktionen: $\cL w_j=\lambda_jw_j$\\
+    \begin{bsp}{}
+      \[
+        \begin{cases}
+          -u_{xx}=f & \mbox{ in }\Omega=(0,1)\\
+          u(0)=u(1)=0
+        \end{cases}
+      \]
+      %TODO: define Spann
+      $\cU_n=\Spann\{w_j(x)=sin(\pi j x),j=1,\dots,n\}$\\
+      $\cL w_j=\pi^2j^2w_j$\\
+      $B_ij=B(w_j,w_i)\leq\int_0^2w_j'(x)w_i'(x)dx\\
+      =\int_0^1\pi j cos(\pi j x)\pi i cos(\pi i x) dx\\
+      =\frac{1}{2}\pi^2ij\int_0^1(\cos(\pi(j+i)x)+\cos(\pi(i-j)x))dx\\
+      =\frac{\pi^2 ij}{2} 
+      \begin{cases}
+        \frac{1}{\pi(i+j)}\sin(\pi(i+j))+\frac{1}{\pi(i-j)}\sin(\pi(i-j)) &
+        i\neq j\\
+        \frac{1}{2\pi i}\sin(2\pi i)+1 & i=j \\
+      \end{cases}\\
+      = \begin{cases}
+        0 &i\neq j\\
+        \frac{\pi^2i^2}{2} & i=j \\
+      \end{cases}\\
+      $
+      \[\Rightarrow B=\frac{\pi^{2}}{2}\begin{bmatrix}1\\
+        & 2^{2}\\
+        &  & \ddots\\
+        &  &  & n^{2}
+      \end{bmatrix}
+      \]
+      $l_n(\phi)=h\sum_{j=1}^n\frac{f(x_j)\phi(x_j)+f(x_{j-1})\phi(x_j-1)}{2}$\\
+      (Summierte Trapezregel)\\
+      $\Rightarrow$ $l_n(w_i)=\frac{h}{2}\sum f(x_i)\sin(\pi ix_j)+f(x_{j-1})
+      \sin(\pi i x_{j-1})=\frac{h}{2}(\dots)\\
+      =h\sum_{j=1}^{n-1}f(x_j)\sin(\pi i j h)$\\
+      %TODO: Vervollständigen
+      $\Rightarrow$ $u_n(x)=\sum_{j=1}^n\gamma_j w_j(x)
+      =\sum_{j=1}^n\frac{2h}{\pi^2j^2}(\sum_{i=1}^{n-1}f(x_i)\sin(\pi j i h))
+      \sin(\pi j x)$\\
+      $u_n(x)\overset{n\rightarrow \infty}{\longrightarrow}u(x)$
+    \end{bsp}
+    um die Eigenfunktionen zu berechnen muss man aber auch das AWP lösen,
+    bringt also keinen echten Vorteil
+  \item Polynome\\
+    $\cU_n=\Spann\{w_j(x)=x^j(1-x),j=1,\dots,n\}$\\
+    $\Rightarrow$ $B=[B_{ij}]$ - voll besetzt, schlecht konditioniert
+  \item Stückweise Polynome von geringem Grad\\
+    Sei $0=x_0<x_1<,\cdots,<x_n<x_{n+1}=1$, $h=\frac{1}{n+1}$, $x_i=ih$\\
+    $\cU_n=\{ v\in C(0,1):v|_{x_{j-1},x_j}\in \P_1, j=1,\cdots,n,v(0)=v(1)=0
+    \}$\\
+    $w_j(x)= \begin{cases}
+      \frac{x-x_{j-1}}{h} & x\in(x_{j-1},x_j)\\
+      \frac{x_{j+1}-x}{h} & x\in(x_{j},x_{j+1})\\
+      0 & \text{sonst}
+    \end{cases} $\\
+    $\Rightarrow$ $B_ij=B(w_j,w_i)=\int_0^1 w_j'(x)w_i'(x)dx\\
+    = \begin{cases}
+      \frac{1}{h^2}(\int_{x_{j-1}}^{x_j}dx+\int_{x_j}^{x_{j+1}}dx) & i=j\\
+      -\frac{1}{h^2}\int_{x_{j-1}}^{x_j}dx & i=j-1\\
+      -\frac{1}{h^2}\int_{x_j}^{x_{j+1}}dx & i=j+1\\
+      0
+    \end{cases}\\
+    = \begin{cases}
+      \frac{2}{h} & i=j\\
+      -\frac{1}{h} & |i-j|=1 \\
+      0
+    \end{cases} $\\
+    %TODO: vlt ein mathcal{l}
+    $l_n(w_j)=\frac{h}{2}\sum_{i=1}{n+1}(f(x_i)w_j(x_i)+f(x_{i-1})w_j(x_{i-1}))\\
+    =\frac{h}{w}\sum_{i=1}{n+1}(f(x_i)\partial_{ij}+f(x_{i-1})\partial_{i-1,j})
+    =hf(x_j)$\\
+    Erstelle damit das Gleichungssystem:
+    \[
+      \frac{1}{h^{2}}\begin{bmatrix}2 & -1\\
+      -1 & 2 & -1\\
+         & -1 & \ddots & \ddots\\
+         &  & \ddots & 2 & -1\\
+         &  &  & -1 & 2
+    \end{bmatrix}\begin{bmatrix}\gamma_{1}\\
+      \gamma_{2}\\
+      \vdots\\
+      \gamma_{n-1}\\
+      \gamma_{n}
+    \end{bmatrix}=\begin{bmatrix}f(x_{1})\\
+      f(x_{2})\\
+      \vdots\\
+      f(x_{n-1})\\
+      f(x_{n})
+    \end{bmatrix}
+    \]
+    $u_n(x)=\sum_{j=1}^n \gamma_j w_j(x)$\\
+    (Finite Elemente Methode)
+\end{enumerate}
+
+\section{Methode der finiten Elemente (FEM)}
+$ (VGL) \begin{cases}
+  B(u,\phi)=l(\phi) & \forall \phi \in H\\
+  u\in H - ?
+\end{cases} $
+$~~~~~~\Rightarrow~~~~~~$
+$ (VGL)_n \begin{cases}
+  B_n(u_n,\phi)=l_n(\phi) & \forall \phi \in \cU_n\subset H\\
+  u_n\in \cU_n-?
+\end{cases} $
+
+\textbf{Idee:} Wähle als Ansatzfunktionen zur Approximation von $(VGL)$ mittels
+$(VGL)_n$ eine Zusammensetzung von auf endlichen \emph{Teilstücken} von $\Omega$
+definierten Funktionen.
+\begin{enumerate}
+  \item 
+  \item Lokale Ansatzfunktionen über den Teilgebiet = Polynome
+  \item Globale Ansatzfunktionen über $\Omega$ = lokale Ansatzfunktionen mit
+    bestimmten Glattheitseigenschaften am Rand des Teilgebiets
+\end{enumerate}
+\begin{defn}[Finite Element]{}
+  Ein \emph{finites Element} in $\R^d$ ist ein Trippel $(K,P,\Sigma)$ mit den
+  Eigenschaften:
+  \begin{enumerate}
+    \item $K\in \R^d$ kompakt, $\partial K$ - Lipschitz Stetig
+    \item $P$ ist ein Endlich dimensionaler Raum von Funktionen $p\in
+      C^s(K,\R)$
+    \item $\Sigma=\{ b_1,\cdots,b_m \}$ mit $b_j\in (C^s(K,\R))'$ ist
+      P-unisolvent, d.h.
+      \[\forall \alpha \in \R^m \exists! p\in P:
+      b_j(p)=\cL_j, j=1,\cdots,m\]
+  \end{enumerate}
+
+\end{defn}
+
+\begin{bem}{}
+  \begin{enumerate}
+    \item Sei $\Sigma=\{b_1,\dots,b_m\}$ P-unisolvent, dann sind
+      $b_1,\dots,b_m$ linear unabhängig
+  \end{enumerate}
+\end{bem}
 
 % deactivated
 %\clearpage
