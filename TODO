@@ -1,1 +1,5 @@
 document.tex:          0=div(v) \\ % TODO: declare as math operator
+document.tex:%TODO: where is VGL2 defined?
+document.tex:      %TODO: define Spann
+document.tex:      %TODO: Vervollständigen
+document.tex:    %TODO: vlt ein mathcal{l}
