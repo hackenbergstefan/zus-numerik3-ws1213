@@ -158,7 +158,7 @@ titleboxcolor = black]{uebung}{Übung}
 %\def\cH{\mathcal{H}}
 %\def\cI{\mathcal{I}}
 %\def\cJ{\mathcal{J}}
-%\def\cK{\mathcal{K}}
+\def\cK{\mathcal{K}}
 \def\cL{\mathcal{L}}
 %\def\cM{\mathcal{M}}
 %\def\cN{\mathcal{N}}
@@ -818,7 +818,7 @@ $ (VGL)_n \begin{cases}
 $(VGL)_n$ eine Zusammensetzung von auf endlichen \emph{Teilstücken} von $\Omega$
 definierten Funktionen.
 \begin{enumerate}
-  \item 
+  \item % Hier waren skizzen
   \item Lokale Ansatzfunktionen über den Teilgebiet = Polynome
   \item Globale Ansatzfunktionen über $\Omega$ = lokale Ansatzfunktionen mit
     bestimmten Glattheitseigenschaften am Rand des Teilgebiets
@@ -830,10 +830,10 @@ definierten Funktionen.
     \item $K\in \R^d$ kompakt, $\partial K$ - Lipschitz Stetig
     \item $P$ ist ein Endlich dimensionaler Raum von Funktionen $p\in
       C^s(K,\R)$
-    \item $\Sigma=\{ b_1,\cdots,b_m \}$ mit $b_j\in (C^s(K,\R))'$ ist
+    \item $\Sigma=\{ b_1,\dots,b_m \}$ mit $b_j\in (C^s(K,\R))'$ ist
       P-unisolvent, d.h.
       \[\forall \alpha \in \R^m \exists! p\in P:
-      b_j(p)=\cL_j, j=1,\cdots,m\]
+      b_j(p)=\cL_j, j=1,\dots,m\]
   \end{enumerate}
 
 \end{defn}
@@ -842,8 +842,138 @@ definierten Funktionen.
   \begin{enumerate}
     \item Sei $\Sigma=\{b_1,\dots,b_m\}$ P-unisolvent, dann sind
       $b_1,\dots,b_m$ linear unabhängig
+    \item Sei $p_j\in P$ so gewählt, dass $b_i(p_j)=\delta_{ij}$ $\forall
+      i,j=1,\dots, m$. Dann ist $\{p_1,\dots,p_m\}$ eine Basis von $P$.
+    \item Sei $\{p_1,\dots,p_n\}$ eine Basis von $P$ und seien $b_j\in
+    (C^s(K,\R))'$ so gewählt, dass $b_i(p_j)=\delta_{ij}$ $\forall
+  i,j=1,\dots,m$. Dann ist $\{b_1,\dots,b_m\}$ $P$-unisolvent.
   \end{enumerate}
 \end{bem}
+
+\begin{bsp}{}
+  \begin{enumerate}
+    \item $d=1$, $K=[a_1,a_2]$ mit $ a_1<a_2$
+      \[ P:=\{ \gamma_1x^2+\gamma_2x+\gamma_3|\gamma_i\in\R,x\in K \} \]
+      $ \Sigma:=\{b_1,b_2,b_3\} $ mit:
+      \begin{itemize} % TODO: align*
+        \item $b_1(p)=p(a_1)$
+        \item $ b_2(p)=p(a_2)$
+        \item $b_3(p)=p(\frac{a_1+a_2}{2})$
+      \end{itemize}
+      Sei $\alpha=[\alpha_i]_i\in \R^3$
+      $\rightarrow 
+      \begin{cases}
+        \alpha_1=b_1(p) & =p(a_1)=\gamma_1a_1^2+\gamma_2a_1+\gamma_3\\
+        \alpha_2=b_2(p) & =p(a_2)\\
+        \alpha_3=b_3(p) & =p(\frac{a_1+a_2}{2})\\
+      \end{cases}
+      $\\
+
+      $\Rightarrow \begin{pmatrix}a_{1}^{2} & a_{1} & 1\\
+      a_{2}^{2} & a_{2} & 1\\
+      \frac{(a_{1}+a_{2})^{2}}{2^{2}} & \frac{a_{1}+a_{2}}{2} & 1
+    \end{pmatrix}\gamma=\alpha $
+    welches eindeutig lösbar ist!\\
+    $\Rightarrow \Sigma$ ist $P$-unisolvent\\
+    falls $b_1(p_1)=\delta_{ij}$ $\Rightarrow$ $\{p_1,...,p_3\}$ Basis von $P$
+  \item $d=2$, $K:=conv{a_1,a_2,a_3}\subset \R^2$
+    \[ P:={\gamma_1x_1+\gamma_2x_2+\gamma_3:\gamma_i\in \R} \]
+    $\Sigma={b_1,b_2,b_3}$ mit:
+    \begin{itemize}
+        \item $b_1(p)=p(a_1)$
+        \item $b_2(p)=p(a_2)$
+        \item $b_3(p)=p(a_3)$
+    \end{itemize}
+    sei $\alpha \in \R^3$, $p(x)=\gamma_1x_1+\gamma_2x_2+\gamma_3$\\
+    $\Rightarrow\alpha_1=b_1(p)=p_(a_1)$\\
+    $\Rightarrow\alpha_1=b_2(p)=p_(a_2)$\\
+    $\Rightarrow\alpha_1=b_3(p)=p_(a_3)$\\
+    ($a_1=[a_{11},a_{21}]$)\\
+    $\Rightarrow$ 
+    $\begin{pmatrix}a_{11} & a_{21} & 1\\
+    a_{12} & a_{22} & 1\\
+    a_{13} & a_{23} & 1
+    \end{pmatrix}\gamma=\alpha$
+    welches wieder eindeutig lösbar ist. 
+    $\Rightarrow$ $\Sigma$ P-unisolvent
+  \end{enumerate}
+\end{bsp}
+
+\subsection{Finite Elemente vom Langrange-Typ}
+
+\begin{defn}[Simplizes]{}
+  \begin{enumerate}
+    \item Seien $a_1,\dots,a_{d+1}\in\R^d$, dann heißt $K=\{
+      x=\sum_{j=1}^{d+1}\mu_ja_j| \sum\mu_j=1, 0\leq\mu_j\leq 1 \} \subset 
+      \R^d$ ein $d$-Simplex
+    \item Seien $a_j=[a_{1j},\dots,a_{dj}]^T$ $j=1,\dots,d$. Ein Simplex $K$
+      heißte \emph{nicht Entartet}, falls 
+      \[
+        \begin{pmatrix}
+          a_{1,1} & \cdots & a_{1,d+1} \\
+          \vdots & & \vdots\\
+          a_{d,1} & \cdots & a_{d,d+1}\\
+          1 & \dots & 1\\
+        \end{pmatrix}
+      \]
+      invertierbar ist
+    \item Falls $x=\sum\mu_ia_i$, dann heißen die $\mu_i$ die
+    \emph{baryzentrischen Koordinaten} von $x$
+  \end{enumerate}
+\end{defn}
+
+\begin{bsp}[Simplizes]{}
+  \begin{itemize}
+    \item Intervall
+    \item Dreieck
+    \item $\cdots$
+  \end{itemize}
+\end{bsp}
+
+\begin{defn}[Einheits Simplex]{}
+  Das Simplex mit den ecken $a_{d+1}=0$ und $a_j=e_j$ für $j=1,\dots,d$ heißt
+  \emph{d-Eiheitssimplex (Standart Simplex)}.
+\end{defn}
+
+\begin{lem}{5.1}
+  Jedes nichtentartete $d$-Simplex $K$ ist affin äquivalent zum 
+  d-Einheitssimplex $\hat K$ d.h. es gibt genau eine Abb. $F:\hat K \righarrow
+  K; \hat x\mapsto A_k\hat x+b_k$, mit eindeutiger invertierbaren Matrix $A_K\in
+  \R^{d\times d}$, $b_K\in \R^d$ so dass
+  \begin{align*}
+    F(0) &= a_{d+1} & F(e_j) &= a_j
+  \end{align*}
+\end{lem}
+
+\begin{defn}{}
+  $(K,P,\Sigma)$ heißt ein Simpliziales finites Element vom Langrangetyp, falls:
+  \begin{enumerate}
+    \item $K$ ein $d$-Simplex
+    \item $P=\P_k$ die Menge aller Polynome bis zum Grad $k$ in $d$ Variablen
+    \item $\Sigma=\{b:P\rightarrow \R \text{ linear} | p(b)=p(a), \mbox{ wobei
+      } a\in \cK_k=\{ x=\sum_{j=1}^{d+1}\mu_ja_j| \sum\mu_j=1 \text{ , }
+      \mu_j\in\{0,\frac{1}{k},\dots,\frac{k-1}{k},1\} \}\}$
+  \end{enumerate}
+\end{defn}
+
+\begin{bsp}{}
+  \begin{enumerate}
+    \item $d$-Simplex vom Typ(1), d.h. $k=1$\\
+      sei $d=2$:\\
+      $K$ Simplex mit den Ecken $a_1,\dots,a_3\in\R^2$\\
+      $K_1=\{ x=\sum_{j=1}^3\mu_ja_j| \sum\mu_j=1,
+      \mu_j\in\{0,1\}\}=\{a_1,a_2,a_3\}$\\
+      $P=\P_1$\\
+      $\Sigma = \{ b_1,b_2,b_3 \}$ mit 
+      \begin{align*}
+        b_1(p) &= p(a_1) & 
+        b_2(p) &= p(a_2) &
+        b_3(p) &= p(a_3) &
+      \end{align*}
+      $P$-unisolvent\\
+    $b_i(p_i)=\delta_{ij}$
+  \end{enumerate}
+\end{bsp}
 
 % deactivated
 %\clearpage
